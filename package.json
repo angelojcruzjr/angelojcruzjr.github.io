@@ -1,0 +1,24 @@
+{
+  "name": "angelojcruzjr.github.io",
+  "version": "1.0.0",
+  "description": "Code for personal website",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "modernizr": "^3.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelojcruzjr/angelojcruzjr.github.io.git"
+  },
+  "author": "Angelo Cruz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angelojcruzjr/angelojcruzjr.github.io/issues"
+  },
+  "homepage": "https://github.com/angelojcruzjr/angelojcruzjr.github.io#readme"
+}
