@@ -241,9 +241,6 @@
 			$('.slide.current').removeClass('current');
 			$('.slide[data-view="'+view+'"]').addClass('current');
 		},
-		setCurrentTitle: function(view) {
-			$('title').html('APPLICATION: '+$('.pane[data-view="'+$('.slide.current').data('view')+'"] img').attr('alt'));
-		},
 		nextSlide: function() {
 			$slides.each(function() {
 				var x = $(this).attr('data-order');
