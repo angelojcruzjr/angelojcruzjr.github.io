@@ -355,7 +355,6 @@
 		}
 	};
 
-	/* dat shit cray -----------------  */
 	$(APPLICATION.init);
 	$window.resize(APPLICATION.events.onResize);
 	window.onpopstate = function() {
