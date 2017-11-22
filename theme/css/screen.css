@@ -143,7 +143,7 @@
       -ms-filter: blur(6px);
       filter: blur(6px);
   }
-  #slides .slide[data-order="3"] { z-index: 5; top: 12%; right: -10%;  opacity: .3;
+  #slides .slide[data-order="3"] { z-index: 6; top: 30%; right: 40%; opacity: .6;
       -webkit-transform: scale(.4);
       -moz-transform: scale(.4);
       -ms-transform: scale(.4);
@@ -279,8 +279,8 @@
   #slides .slide[data-view="whitehouse"] p { margin:.1em 4.1em; width:80%; }
   
   /* twitter */
-  #slides .slide[data-view="twitter"] p img { left:-2.9em; bottom:12px; width:12%; }
-  #slides .slide[data-view="twitter"] p { margin:.1em 4.1em; width:80%; }
+  #slides .slide[data-view="twitter"] p img { left:-2.8em; bottom:4px; width:12%; }
+  #slides .slide[data-view="twitter"] p { margin:.1em 3.5em; width:82%; }
   
   
   /* panes --------------- */
@@ -297,29 +297,82 @@
   }
   #panes.hide { opacity:0; bottom:-50%; }
   #panes.show { opacity:1; bottom:0; }
-  #panes .pane { display:none; font-size:18px; padding:0; }
-  #panes .pane * { line-height:150%; color:#3a3a3a; }
-  #panes .pane a { text-decoration:none; color:#777; }
-  #panes .pane a:hover { border-bottom:2px solid #e94700; }
-  #panes .pane p { margin:1.3em 0; }
-  #panes .pane p strong { display:block; }
-  #panes .pane li { margin:.5em 0; padding-left:30px; background:url('/theme/img/icon-bullet.png') no-repeat 10px center; }
-  #panes .pane img { position:absolute; top:-10%; left:50%; margin-left:-163px; }
-  #panes .pane:after { content:''; display:block; clear:both; }
-  #panes .pane .close { background-color:#ccc; margin:1.5em 1em .5em; padding:8px; text-align:center; font-weight:bold; text-transform:uppercase; display:block; text-decoration:none; }
+
+#panes .pane { 
+      display:none; 
+      font-size:18px; padding:0; 
+}
+
+#panes .pane * { 
+    line-height:150%; 
+    color:#3a3a3a; 
+}
   
-  /* Pane variations ----------*/
-  /* intro */
-  #panes .pane[data-view="intro"] .inner .left { width:330px; }
-  #panes .pane[data-view="intro"] .inner .right { width:330px; }
+#panes .pane a {
+    text-decoration:none;
+    color:#777;
+}
+
+#panes .pane a:hover {
+    border-bottom:2px solid #e94700;
+}
+
+#panes .pane p { 
+    margin:1.3em 0;
+}
+
+#panes .pane p strong {
+    display:block;
+}
+
+#panes .pane li {
+    margin:.5em 0;
+    padding-left:30px;
+    background:url('/theme/img/icon-bullet.png') no-repeat 10px center;
+}
+
+#panes .pane img {
+    position:absolute;
+    top:-10%; left:50%;
+    margin-left:-163px;
+}
+
+#panes .pane:after {
+    content:'';
+    display:block;
+    clear:both;
+}
+
+#panes .pane .close {
+    background-color:#ccc;
+    margin:1.5em 1em .5em;
+    padding:8px;
+    text-align:center;
+    font-weight:bold;
+    text-transform:uppercase;
+    display:block;
+    text-decoration:none;
+}
   
-  /* whitehouse */
-  #panes .pane[data-view="whitehouse"] .inner .right { width:325px; }
+/* Pane variations ----------*/
+/* intro */
+#panes .pane[data-view="intro"] .inner .left {
+    width:330px;
+}
+
+#panes .pane[data-view="intro"] .inner .right {
+    width:330px;
+}
   
-  /* twitter */
-  #panes .pane[data-view="twitter"] .inner .left { width:300px; }
-  #panes .pane[data-view="twitter"] .inner img { top:-15%; }
-  #panes .pane[data-view="twitter"] .inner .right { width:325px; }
+/* whitehouse */
+#panes .pane[data-view="whitehouse"] .inner .right {
+    width:325px;
+}
+  
+/* twitter */
+#panes .pane[data-view="twitter"] .inner .left {
+    width:325px;
+}
   
   /* dates --------------- */
   #dates { width:40px; height:65px; position:absolute; top:-8px; left:110px; }
@@ -374,7 +427,7 @@
   #about-pane div.left { width:340px; }
   
   /* Misc content elements */
-  #about-pane img { position:absolute; bottom:0; left:50%; margin-left:-225px; }
+  #about-pane img { position:absolute; bottom:7%; left:60%; margin-left:-225px; }
   #about-pane * { color:#888; line-height:150%; }
   #about-pane p strong { color:#fff; display:block; }
   #about-pane p a { color:#fff; }

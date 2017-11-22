@@ -215,25 +215,28 @@
 		},
 		getTickerWidth: function() {
 			// Set the gutter -- the left and right of track
-			if (APPLICATION.touch == false) {
+			if (APPLICATION.touch === false) {
 				var gutter = 292;
 			} else {
 				var gutter = 145;
 			}
-			return (($window.width()-gutter) / $('.slide').size());
+
+			return ($window.width() - gutter) / 2.3;
 		},
 		setTickerPosition: function() {
 			// Set the left gutter
-			if (APPLICATION.touch == false) {
+			if (APPLICATION.touch === false) {
 				var leftGutter = 168;
 			} else {
 				var leftGutter = 64;
 			}
 			var newPosition = (($('.slide.current').index()) * APPLICATION.utils.getTickerWidth()) + leftGutter;
+
+			console.warn('tickerPosition', newPosition);
+
 			$('#ticker-moment').css({left:newPosition+'px'});
 		},
 		setCurrentPane: function(view) {
-			APPLICATION.utils.setCurrentTitle(view);
 			$('.pane').css({display:'none'});
 			$('.pane[data-view="'+$('.slide.current').data('view')+'"]').css({display:'block'});
 		},
