@@ -224,17 +224,21 @@
 			return ($window.width() - gutter) / 2.3;
 		},
 		setTickerPosition: function() {
+			var leftGutter,
+				railWidth,
+				newPosition;
+
 			// Set the left gutter
 			if (APPLICATION.touch === false) {
-				var leftGutter = 168;
+				leftGutter = 168;
 			} else {
-				var leftGutter = 64;
+				leftGutter = 64;
 			}
-			var newPosition = (($('.slide.current').index()) * APPLICATION.utils.getTickerWidth()) + leftGutter;
 
-			console.warn('tickerPosition', newPosition);
+			railWidth = $('#track').width() - 340;
+			newPosition = ((railWidth / 2) * $('.slide.current').index()) + leftGutter;
 
-			$('#ticker-moment').css({left:newPosition+'px'});
+			$('#ticker-moment').css({left:newPosition + 'px'});
 		},
 		setCurrentPane: function(view) {
 			$('.pane').css({display:'none'});
@@ -314,13 +318,10 @@
 			}
 		},
 		toggleAboutPane: function() {
-			console.log('g');
 			if ($('#about-pane').hasClass('show')) {
-				console.log('e');
 				APPLICATION.utils.hideAboutPane();
 			}
 			else {
-				console.log('d');
 				APPLICATION.utils.showAboutPane();
 			}
 		},
