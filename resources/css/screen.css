@@ -11,7 +11,7 @@
   
   /* globals --------------- */
   html { overflow-x:hidden; }
-  body { background:#222 url('/theme/img/bg-desktop.jpg') center center fixed; font-family:"Helvetica Neue", "Helvetica", arial, sans-serif; overflow-x:hidden; position:relative;
+  body { background:#222 url('/resources/img/bg-desktop.jpg') center center fixed; font-family:"Helvetica Neue", "Helvetica", arial, sans-serif; overflow-x:hidden; position:relative;
       -webkit-background-size:cover;
       -moz-background-size:cover;
       -ms-background-size:cover;
@@ -60,7 +60,7 @@
       -ms-box-shadow:2px 0px 2px rgba(0,0,0,.2);
       box-shadow:2px 0px 2px rgba(0,0,0,.2);
   }
-  #ticker-moment:before { content:''; position:absolute; top:10px; left:44%; width:11px; height:17px; background:url('/theme/img/icon-marker.png'); }
+  #ticker-moment:before { content:''; position:absolute; top:10px; left:44%; width:11px; height:17px; background:url('/resources/img/icon-marker.png'); }
   #ticker-moment:hover { color:rgba(255,255,255,.8); }
   
   /* keys --------------- */
@@ -320,7 +320,7 @@
 #panes .pane li {
     margin:.5em 0;
     padding-left:30px;
-    background:url('/theme/img/icon-bullet.png') no-repeat 10px center;
+    background:url('/resources/img/icon-bullet.png') no-repeat 10px center;
 }
 
 #panes .pane img {
@@ -387,7 +387,7 @@
   
   /* info trigger -------------------*/
   #about { width:17px; height:17px; position:absolute; top:21px; left:36px; }
-  #about #about-trigger { background:rgba(255,255,255,.4) url('/theme/img/icon-info.png') no-repeat 7px 4px; width:18px; height:18px; overflow:hidden; display:block; text-indent:-999999px;
+  #about #about-trigger { background:rgba(255,255,255,.4) url('/resources/img/icon-info.png') no-repeat 7px 4px; width:18px; height:18px; overflow:hidden; display:block; text-indent:-999999px;
       -webkit-border-radius:20px;
       -moz-border-radius:20px;
       -ms-border-radius:20px;
@@ -399,13 +399,13 @@
       transition:background-color .3s ease-in-out;
   }
   #about #about-trigger.close,
-  #about #about-trigger.close:hover { background:#e94700 url('/theme/img/icon-close.png') no-repeat center; }
+  #about #about-trigger.close:hover { background:#e94700 url('/resources/img/icon-close.png') no-repeat center; }
   #about #about-trigger:before { content:''; position:absolute; top:4px; right:23px; width:40px; height:10px; background-color:#fff; background-color:rgba(255,255,255,.15); }
   #about #about-trigger:hover { background-color:#fff; }
   
   
   /* about pane -------------------*/
-  #about-pane { position:fixed; z-index:400; left:0; right:0; opacity:0; top:-50%; padding:20px 0; background:rgba(0,0,0,.65) url('/theme/img/smile.png') no-repeat bottom center;
+  #about-pane { position:fixed; z-index:400; left:0; right:0; opacity:0; top:-50%; padding:20px 0; background:rgba(0,0,0,.65) url('/resources/img/smile.png') no-repeat bottom center;
       -webkit-transition:top .5s ease-in-out, opacity .5s ease-in-out;
       -moz-transition:top .5s ease-in-out, opacity .5s ease-in-out;
       -ms-transition:top .5s ease-in-out, opacity .5s ease-in-out;
