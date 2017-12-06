@@ -1,6 +1,12 @@
   /* reset --------------- */
   html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,form,label,table,caption,tbody,tfoot,thead,tr,th,td {margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
-  body { line-height: 1; }
+  body { 
+      line-height: 1;
+      perspective: 1px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 100vh;
+  }
   ol, ul { list-style: none; }
   blockquote, q { quotes: none; }
   :focus { outline: 0; }
@@ -24,9 +30,6 @@
       -ms-user-select: none;
       user-select: none;
   }
-  .inner { width:960px; margin:0 auto; }
-  .inner .left { float:left; font-size:18px; width:290px; line-height:130%; }
-  .inner .right { float:right; font-size:18px; width:290px; line-height:130%; }
   
   /* track --------------- */
   #track { position:fixed; z-index:300; bottom:50px; left:0; right:0; height:41px;
@@ -288,10 +291,14 @@
       box-shadow:0 -3px 5px rgba(0,0,0,.2);
   }
   #panes.hide { opacity:0; bottom:-50%; }
-  #panes.show { opacity:1; bottom:0; }
+  #panes.show {
+      position: absolute;
+      opacity:1;
+      bottom:0;
+      display: inherit !important;
+  }
 
-#panes .pane { 
-      display:none; 
+#panes .pane {
       font-size:18px; padding:0; 
 }
 
@@ -346,26 +353,6 @@
     text-decoration:none;
 }
   
-/* Pane variations ----------*/
-/* intro */
-#panes .pane[data-view="intro"] .inner .left {
-    width:330px;
-}
-
-#panes .pane[data-view="intro"] .inner .right {
-    width:330px;
-}
-  
-/* whitehouse */
-#panes .pane[data-view="whitehouse"] .inner .right {
-    width:325px;
-}
-  
-/* twitter */
-#panes .pane[data-view="twitter"] .inner .left {
-    width:325px;
-}
-  
   /* dates --------------- */
   #dates { width:40px; height:65px; position:absolute; top:-8px; left:110px; }
   #dates:before { content:''; position:absolute; top:33px; right:50px; width:40px; height:10px; background-color:#fff; background-color:rgba(255,255,255,.15); }
@@ -405,7 +392,7 @@
   
   
   /* about pane -------------------*/
-  #about-pane { position:fixed; z-index:400; left:0; right:0; opacity:0; top:-50%; padding:20px 0; background:rgba(0,0,0,.65) url('/resources/img/smile.png') no-repeat bottom center;
+  #about-pane { position:fixed; z-index:400; left:0; right:0; opacity:0; top:-50%; padding:20px 0; background:rgba(0,0,0,.65) no-repeat bottom center;
       -webkit-transition:top .5s ease-in-out, opacity .5s ease-in-out;
       -moz-transition:top .5s ease-in-out, opacity .5s ease-in-out;
       -ms-transition:top .5s ease-in-out, opacity .5s ease-in-out;
@@ -458,6 +445,7 @@
 
 .about-panel-right {
     width: 40%;
+    margin-left: 0.5%;
 }
 
 .about-content {
@@ -474,8 +462,7 @@
 
 .about-photo {
     height: auto;
-    max-width: 11%;
-    position: absolute;
+    max-width: 100%;
 }
 
 .text {
@@ -511,4 +498,29 @@
     .contact {
         text-align: -webkit-center;
     }
+}
+
+/*********************** PANE CONTAINER ****************************/
+
+.inner {
+    background: white;
+}
+
+.pane-container {
+    padding-left: 5%;
+    width: 90%;
+    height: auto;
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.welcome {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+}
+
+.section-divider {
+    font-weight: bold;
+    float: left;
+    width: 100%;
 }
