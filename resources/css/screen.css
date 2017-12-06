@@ -278,17 +278,27 @@
   #slides .slide[data-view="twitter"] p { margin:.1em 3.5em; width:82%; }
   
   
-  /* panes --------------- */
-  #panes { position:fixed; z-index:400; left:0; right:0; background:#fff; height:290px; font-family:'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Arial, Helvetica, sans-serif; font-weight:100;
-      -webkit-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
-      -moz-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
-      -ms-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
-      transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
+/* panes --------------- */
+#panes {
+    position:fixed;
+    z-index:400;
+    left:0;
+    right:0;
+    background:#fff;
+    max-height: 40%;
+    height: auto;
+    font-family:'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight:100;
+    
+    -webkit-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
+    -moz-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
+    -ms-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
+    transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
       
-      -webkit-box-shadow:0 -3px 5px rgba(0,0,0,.2);
-      -moz-box-shadow:0 -3px 5px rgba(0,0,0,.2);
-      -ms-box-shadow:0 -3px 5px rgba(0,0,0,.2);
-      box-shadow:0 -3px 5px rgba(0,0,0,.2);
+    -webkit-box-shadow:0 -3px 5px rgba(0,0,0,.2);
+    -moz-box-shadow:0 -3px 5px rgba(0,0,0,.2);
+    -ms-box-shadow:0 -3px 5px rgba(0,0,0,.2);
+    box-shadow:0 -3px 5px rgba(0,0,0,.2);
   }
   #panes.hide { opacity:0; bottom:-50%; }
   #panes.show {
@@ -299,7 +309,9 @@
   }
 
 #panes .pane {
-      font-size:18px; padding:0; 
+      font-size:18px;
+      padding:0;
+      background: white;
 }
 
 #panes .pane * { 
