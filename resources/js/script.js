@@ -359,9 +359,6 @@
 	}
 
 	function drawVizzes() {
-		var echarts = require('echarts.min.js');
-		console.warn(document.getElementById('chart-viz'));
-		console.warn(echarts);
 		var myChart = echarts.init(document.getElementById('chart-viz'));
 
 		var option = {
