@@ -536,3 +536,17 @@
     float: left;
     width: 100%;
 }
+
+.viz {
+    width: 49%;
+    max-height: 500px;
+    height: auto;
+    min-height: 450px;
+    display: inline-block;
+}
+
+@media (max-width: 900px) {
+    .viz {
+        width: 100%;
+    }
+}

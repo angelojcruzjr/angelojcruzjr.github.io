@@ -8,7 +8,7 @@
 (function($){$.fn.touchwipe=function(settings){var config={min_move_x:20,min_move_y:20,wipeLeft:function(){},wipeRight:function(){},wipeUp:function(){},wipeDown:function(){},preventDefaultEvents:true};if(settings)$.extend(config,settings);this.each(function(){var startX;var startY;var isMoving=false;function cancelTouch(){this.removeEventListener('touchmove',onTouchMove);startX=null;isMoving=false}function onTouchMove(e){if(config.preventDefaultEvents){e.preventDefault()}if(isMoving){var x=e.touches[0].pageX;var y=e.touches[0].pageY;var dx=startX-x;var dy=startY-y;if(Math.abs(dx)>=config.min_move_x){cancelTouch();if(dx>0){config.wipeLeft()}else{config.wipeRight()}}else if(Math.abs(dy)>=config.min_move_y){cancelTouch();if(dy>0){config.wipeDown()}else{config.wipeUp()}}}}function onTouchStart(e){if(e.touches.length==1){startX=e.touches[0].pageX;startY=e.touches[0].pageY;isMoving=true;this.addEventListener('touchmove',onTouchMove,false)}}if('ontouchstart'in document.documentElement){this.addEventListener('touchstart',onTouchStart,false)}});return this}})(jQuery);
 
 // APPLICATION
-(function(window, $, undefined, echarts) {
+(function(window, $, echarts) {
 
 	/* cache vars -----------------  */	
 	var APPLICATION = window.APPLICATION || {};
@@ -358,51 +358,96 @@
   		APPLICATION.events.onPopState();
 	}
 
-	function drawVizzes() {
-		var myChart = echarts.init(document.getElementById('chart-viz'));
+	var paneContainerHeight = 0;
 
-		var option = {
+	// Add any resizing events here...
+	window.addEventListener('resize', function() {
+		drawVizzes();
+	});
+
+	function drawVizzes() {
+		var techChart = echarts.init(document.getElementById('technical-proficiencies-viz')),
+			bizChart = echarts.init(document.getElementById('business-proficiencies-viz')),
+			techOption,
+			businessOption;
+
+		barOption = {
 			title : {
-				text: '某站点用户访问来源',
-				subtext: '纯属虚构',
-				x:'center'
+				text: 'Technical Proficiences',
 			},
 			tooltip : {
-				trigger: 'item',
-				formatter: "{a} <br/>{b} : {c} ({d}%)"
+				trigger: 'axis',
+				axisPointer : {
+					type : 'shadow'
+				}
 			},
-			legend: {
-				orient: 'vertical',
-				left: 'left',
-				data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '3%',
+				containLabel: true
 			},
+			xAxis: [
+				{
+					type: 'category',
+					data: ['JavaScript', 'HTML', 'CSS', 'Java', 'SQL', 'Python', 'C/C++', 'Linux', 'Hadoop/HDFS', 'AWS']
+				}
+			],
+			yAxis: [
+				{
+					type: 'value'
+				}
+			],
 			series : [
 				{
-					name: '访问来源',
-					type: 'pie',
-					radius : '55%',
-					center: ['50%', '60%'],
-					data:[
-						{value:335, name:'直接访问'},
-						{value:310, name:'邮件营销'},
-						{value:234, name:'联盟广告'},
-						{value:135, name:'视频广告'},
-						{value:1548, name:'搜索引擎'}
-					],
-					itemStyle: {
-						emphasis: {
-							shadowBlur: 10,
-							shadowOffsetX: 0,
-							shadowColor: 'rgba(0, 0, 0, 0.5)'
-						}
-					}
+					type: 'bar',
+					data: [10, 9, 9, 8, 9, 8, 7, 8, 7, 7]
 				}
 			]
 		};
 
-		myChart.setOption(option);
+		businessOption = {
+			color: ['#2f4554'],
+			title : {
+				text: 'Business Proficiences',
+			},
+			tooltip : {
+				trigger: 'axis',
+				axisPointer : {
+					type : 'shadow'
+				}
+			},
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '3%',
+				containLabel: true
+			},
+			xAxis: [
+				{
+					type: 'category',
+					data: ['UI/UX', 'Financial Analysis', 'Data Analysis', 'Due Dilligence', 'Strategic Analysis', 'Collaboration']
+				}
+			],
+			yAxis: [
+				{
+					type: 'value'
+				}
+			],
+			series : [
+				{
+					type: 'bar',
+					data: [9, 7, 10, 9, 9, 9]
+				}
+			]
+		};
+
+		techChart.setOption(barOption);
+		techChart.resize();
+		bizChart.setOption(businessOption);
+		bizChart.resize();
 	}
 
 	drawVizzes();
 
-})(window, jQuery);
+})(window, jQuery, echarts);
