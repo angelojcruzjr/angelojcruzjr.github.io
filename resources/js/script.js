@@ -368,17 +368,50 @@
 	function drawVizzes() {
 		var techChart = echarts.init(document.getElementById('technical-proficiencies-viz')),
 			bizChart = echarts.init(document.getElementById('business-proficiencies-viz')),
+			scatterChart = echarts.init(document.getElementById('scatter-viz')),
 			techOption,
-			businessOption;
+			businessOption,
+			scatterOption;
 
 		barOption = {
 			title : {
 				text: 'Technical Proficiences',
+				subtext: 'my geeky side',
+				x: 'center'
 			},
 			tooltip : {
 				trigger: 'axis',
 				axisPointer : {
 					type : 'shadow'
+				},
+				formatter: function (d) {
+					var returnArr = [],
+						data = d[0];
+
+					if (data.axisValue === 'JavaScript' || data.axisValue === 'HTML' || data.axisValue === 'CSS') {
+						returnArr.push(
+							'<b style="color: white;">' + data.axisValue + '</b>: ' + data.data + '<br>' 
+						);
+						returnArr.push(
+							'Professional Experience'
+						);
+					} else if (data.axisValue === 'Java' || data.axisValue === 'SQL' || data.axisValue === 'Python') {
+						returnArr.push(
+							'<b style="color: white;">' + data.axisValue + '</b>: ' + data.data + '<br>'
+						);
+						returnArr.push(
+							'College and Professional Experience'
+						);
+					} else {
+						returnArr.push(
+							'<b style="color: white;">' + data.axisValue + '</b>: ' + data.data + '<br>'
+						);
+						returnArr.push(
+							'College Experience'
+						);
+					}
+
+					return returnArr.join('');
 				}
 			},
 			grid: {
@@ -410,11 +443,42 @@
 			color: ['#2f4554'],
 			title : {
 				text: 'Business Proficiences',
+				subtext: 'my professional side',
+				x: 'center'
 			},
 			tooltip : {
 				trigger: 'axis',
 				axisPointer : {
 					type : 'shadow'
+				},
+				formatter: function (d) {
+					var returnArr = [],
+						data = d[0];
+
+					if (data.axisValue === 'UI/UX') {
+						returnArr.push(
+							'<b style="color: white;">' + data.axisValue + '</b>: ' + data.data + '<br>' 
+						);
+						returnArr.push(
+							'Professional Experience'
+						);
+					} else if (data.axisValue === 'Data Analysis' || data.axisValue === 'Market Research' || data.axisValue === 'Strategic Analysis' || data.axisValue === 'Collaboration') {
+						returnArr.push(
+							'<b style="color: white;">' + data.axisValue + '</b>: ' + data.data + '<br>'
+						);
+						returnArr.push(
+							'College and Professional Experience'
+						);
+					} else {
+						returnArr.push(
+							'<b style="color: white;">' + data.axisValue + '</b>: ' + data.data + '<br>'
+						);
+						returnArr.push(
+							'College Experience'
+						);
+					}
+
+					return returnArr.join('');
 				}
 			},
 			grid: {
@@ -426,7 +490,7 @@
 			xAxis: [
 				{
 					type: 'category',
-					data: ['UI/UX', 'Financial Analysis', 'Data Analysis', 'Due Dilligence', 'Strategic Analysis', 'Collaboration']
+					data: ['UI/UX', 'Financial Analysis', 'Data Analysis', 'Market Research', 'Strategic Analysis', 'Collaboration']
 				}
 			],
 			yAxis: [
@@ -442,10 +506,71 @@
 			]
 		};
 
+		scatterOption = {
+			color: ['#61a0a8'],
+			tooltip:{ 
+				formatter: function (d) {
+					var returnArr = [],
+						data = d;
+
+					if (data.name === '2011') {
+						returnArr.push(
+							'<b style="color: white;">' + data.name + '</b><br>High School Graduation<br>' 
+						);
+					} else if (data.name === '2015') {
+						returnArr.push(
+							'<b style="color: white;">' + data.name + '</b><br>College Graduation<br>' 
+						);
+					} else if (data.name === '2016') {
+						returnArr.push(
+							'<b style="color: white;">' + data.name + '</b><br>Career Transition<br>' 
+						);
+					} else if (data.name === '2017') {
+						returnArr.push(
+							'<b style="color: white;">' + data.name + '</b><br>Deloitte<br>' 
+						);
+					}
+
+					return returnArr.join('');
+				}
+			},
+			title : {
+				text: 'Significant Life Events',
+				subtext: 'Click on a bubble to bring up information about the event',
+				x: 'center'
+			},
+			singleAxis: {
+				type: 'category',
+				boundaryGap: false,
+				data: ['2011', '2015', '2016', '2017']
+			},
+			series: {
+				singleAxisIndex: 0,
+				coordinateSystem: 'singleAxis',
+				type: 'scatter',
+				data: [[0, 0], [1, 0], [2, 0], [3, 0]],
+				symbolSize: 50
+			}
+		}
+
 		techChart.setOption(barOption);
 		techChart.resize();
 		bizChart.setOption(businessOption);
 		bizChart.resize();
+
+		scatterChart.setOption(scatterOption);
+		scatterChart.on('click', function (d) {
+			var div = document.getElementById('about-me-text');
+			div.className = 'viz about-me';
+			div.innerHTML = '';
+			setTimeout( function() {
+				div.className += ' load';
+				div.innerHTML = 'Testing...';
+			}, 200);
+			console.warn(d);
+
+		});
+		scatterChart.resize();
 	}
 
 	drawVizzes();
