@@ -322,6 +322,7 @@
 #panes .pane a {
     text-decoration:none;
     color:#777;
+    border-bottom: 1px solid;
 }
 
 #panes .pane a:hover {
@@ -548,10 +549,8 @@
 }
 
 .about-me {
+    font-size: 0.9em;
     opacity: 0;
-    font-size: 21px;
-    margin-top: 25px;
-    text-align: center;
 
     -webkit-transition: opacity 1s ease-in;
        -moz-transition: opacity 1s ease-in;

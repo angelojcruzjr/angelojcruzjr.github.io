@@ -177,13 +177,11 @@
 			APPLICATION.utils.flashKey('KeyRight');
 			if ($('#panes').hasClass('show')) {
 				var view = $('.current').data('view');	
-				APPLICATION.paths.push({'title':view, 'path':'/'+view});
 			}
 		},
 		onKeyBottom: function () {
 			if ($('#panes').hasClass('show')) {
 				APPLICATION.utils.hidePanes();
-				APPLICATION.paths.push({'title':'home', 'path':'/'});
 				APPLICATION.utils.flashKey('KeyBottom');
 			} else {
 				APPLICATION.utils.toggleAboutPane();
@@ -199,7 +197,6 @@
 			APPLICATION.utils.flashKey('KeyLeft');
 			if ($('#panes').hasClass('show')) {
 				var view = $('.current').data('view');
-				APPLICATION.paths.push({'title':view, 'path':'/'+view});
 			}
 		}
 	};
@@ -564,11 +561,54 @@
 			div.className = 'viz about-me';
 			div.innerHTML = '';
 			setTimeout( function() {
+				if (d.name === '2011') {
+					div.innerHTML = '<div style="text-align: center; width: 100%; margin-top: 2%; margin-bottom: 2%; font-size: 1.2em;">' +
+					'<b style="text-align: center;">High School Graduation</b>' +
+					'</div>' +
+					'In 2011 I graduated high school in Texas and embarked on my college/professional journey. Here are some highlights:<br>' +
+					'<ul>' +
+					'	<li>' + 'Graduated high school in the top 5% of my class' + '</li>' +
+					'	<li>' + 'While in high school I completed several internships at the Johns Hopkins School of Medicine where I did research primarily related to Genetics and Genomics' + '</li>' +
+					'	<li>' + 'Played in various sports including varsity football' + '</li>' +
+					'	<li>' + 'Was named a Gates Millenium Scholar Finalist' + '</li>' +
+					'</ul>';
+				} else if (d.name === '2015') {
+					div.innerHTML = '<div style="text-align: center; width: 100%; margin-top: 2%; margin-bottom: 2%; font-size: 1.2em;">' +
+					'<b style="text-align: center;">College Graduation</b>' +
+					'</div>' +
+					'In 2015 I graduated from the Johns Hopkins University with degrees in Biomedical Engineering and Computer Science. Here are some highlights:<br>' +
+					'<ul>' +
+					'	<li>' + 'Participated in two BME design projects which resulted in being authored in a <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0151789">scientific journal</a>, speaking at conferences, and <a href="https://www.bme.jhu.edu/news-events/news/spirosense-offers-hope-to-patients-with-respiratory-illness/">winning over $50,000 in prize money</a>' + '</li>' +
+					'	<li>' + 'Interned at a <a href="https://www.tissue-analytics.com/#page=home">MedTech startup</a> as a Mobile Software Engineer (Android)' + '</li>' +
+					'	<li>' + 'Co-founded the Johns Hopkins Undergraduate Consulting Club' + '</li>' +
+					'	<li>' + 'Named a Bloomberg Scholar' + '</li>' +
+					'</ul>';
+				} else if (d.name === '2016') {
+					div.innerHTML = '<div style="text-align: center; width: 100%; margin-top: 2%; margin-bottom: 2%; font-size: 1.2em;">' +
+					'<b style="text-align: center;">Career Transition</b>' +
+					'</div>' +
+					'In 2016 I transitioned from my job at Booz Allen Hamilton to a role at Deloitte. Whilte at Booz Allen I was able to work on some great projects. Here are some highlights:<br>' +
+					'<ul>' +
+					'	<li>' + 'Worked on an analytics engagement helping a hospital predict patient readmission rates' + '</li>' +
+					'	<li>' + '<a href="https://www.boozallen.com/content/dam/boozallen/documents/Viewpoints/2016/03/the-challenge-of-sports-science.pdf">' + 
+					'Co-authored a white paper </a>focused on the challenges facing sports teams in the field of sports science' + '</li>' +
+					'	<li>' + 'Worked on a federal health engagement assessing over 9,000 medical records using programming languages such as SQL, VB.NET, and SAS in order to estimate prescription drug overpayments for the Federal Government' + '</li>' +
+					'	<li>' + 'Programmed a software prototype that scraped Google search result data and analyzed it in order to predict trends in public health' + '</li>' +
+					'</ul>';
+				} else if (d.name === '2017') {
+					div.innerHTML = '<div style="text-align: center; width: 100%; margin-top: 2%; margin-bottom: 2%; font-size: 1.2em;">' +
+					'<b style="text-align: center;">Deloitte</b>' +
+					'</div>' +
+					'Since 2016 I have worked at Deloitte as a Technology Consultant. My experience here has been truly amazing and I have met some exceptional people in the process. Here are some highlights:<br>' +
+					'<ul>' +
+					'	<li>' + 'Serve as a Front-End Software Engineer on the <a href="http://semoss.org/">SEMOSS platform</a>. SEMOSS is a web-based, end-to-end data analytics platform' + '</li>' +
+					'	<li>' + 'Assisted a federal client in assessing over $400 MM worth of technology systems to find redundancies and identify cost-savings' + '</li>' +
+					'	<li>' + 'Helped a <a href="http://www.samagra.co/">social enterprise based in Pune, India</a> assess their short-and-long-term technology integration strategy as part of a <a href="https://www2.deloitte.com/lk/en/pages/about-deloitte/articles/d2international.html">Deloitte Social Impact Fellowship</a>' + '</li>' +
+					'	<li>' + 'Worked on a 3-person team to revamp the business plan for a local D.C. non-profit in the insurance space' + '</li>' +
+					'</ul>';
+				}
 				div.className += ' load';
-				div.innerHTML = 'Testing...';
-			}, 200);
-			console.warn(d);
-
+			});
 		});
 		scatterChart.resize();
 	}
