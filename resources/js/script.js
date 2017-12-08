@@ -537,6 +537,9 @@
 				x: 'center'
 			},
 			singleAxis: {
+				left: 50,
+				right: 50,
+				top: 60,
 				type: 'category',
 				boundaryGap: false,
 				data: ['2011', '2015', '2016', '2017']

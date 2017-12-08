@@ -32,13 +32,13 @@
   }
   
   /* track --------------- */
-  #track { position:fixed; z-index:300; bottom:50px; left:0; right:0; height:41px;
+  #track { position: absolute; z-index:300; bottom: 5%; left:0; right:0; height:41px;
       -webkit-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
       -moz-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
       -ms-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
       transition:bottom .5s ease-in-out;
   }
-  #track.adjusted { bottom:330px; }
+  #track.adjusted { bottom: 42%; }
   #track:before { content:''; position:absolute; top:25px; left:160px; right:131px; height:10px; background-color:#fff; background-color:rgba(255,255,255,.15); }
   #track:after { content:''; position:absolute; top:25px; right:0; width:60px; height:10px; background-color:#fff; background-color:rgba(255,255,255,.15); }
   #ticker-moment { position:absolute; max-width:50px; top:-8px; left:60px; line-height:2em; text-align:center; font-size:19px; color:#999; color:rgba(255,255,255,.4); text-decoration:none; font-family:'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Arial, Helvetica, sans-serif; font-weight:300;
