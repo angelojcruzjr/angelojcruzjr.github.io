@@ -147,7 +147,6 @@
 		onPopState: function(force) {
 			var force = force || false;
 			if (APPLICATION.inited || force) {
-				// APPLICATION.utils.togglePanes();
 				APPLICATION.utils.setCurrentSlide(APPLICATION.utils.getView());
 				APPLICATION.utils.redrawView();
 			}
@@ -163,7 +162,6 @@
 					var view = $('.current').data('view');
 				}
 				APPLICATION.utils.hideAboutPane();
-				APPLICATION.utils.showPanes();
 				APPLICATION.utils.flashKey('KeyTop');
 			}
 
@@ -175,17 +173,9 @@
 			APPLICATION.utils.nextSlide();
 			APPLICATION.utils.redrawView();
 			APPLICATION.utils.flashKey('KeyRight');
-			if ($('#panes').hasClass('show')) {
-				var view = $('.current').data('view');	
-			}
 		},
 		onKeyBottom: function () {
-			if ($('#panes').hasClass('show')) {
-				APPLICATION.utils.hidePanes();
-				APPLICATION.utils.flashKey('KeyBottom');
-			} else {
-				APPLICATION.utils.toggleAboutPane();
-			}
+			APPLICATION.utils.toggleAboutPane();
 
 			if (APPLICATION.touch == true) {
 				window.scrollTo(0, 1);
@@ -195,9 +185,6 @@
 			APPLICATION.utils.prevSlide();
 			APPLICATION.utils.redrawView();
 			APPLICATION.utils.flashKey('KeyLeft');
-			if ($('#panes').hasClass('show')) {
-				var view = $('.current').data('view');
-			}
 		}
 	};
 
@@ -225,17 +212,13 @@
 			if (APPLICATION.touch === false) {
 				leftGutter = 168;
 			} else {
-				leftGutter = 64;
+				leftGutter = 168;
 			}
 
 			railWidth = $('#track').width() - 340;
-			newPosition = ((railWidth / 2) * $('.slide.current').index()) + leftGutter;
+			newPosition = ((railWidth / ($slides.length - 1)) * $('.slide.current').index()) + leftGutter;
 
 			$('#ticker-moment').css({left:newPosition + 'px'});
-		},
-		setCurrentPane: function(view) {
-			$('.pane').css({display:'none'});
-			$('.pane[data-view="'+$('.slide.current').data('view')+'"]').css({display:'block'});
 		},
 		setCurrentSlide: function(view) {
 			$('.slide.current').removeClass('current');
@@ -277,27 +260,8 @@
 			$('.date.current').removeClass('current');
 			$('.date[data-view="'+$('.slide.current').data('view')+'"]').addClass('current');
 		},
-		showPanes: function() {
-			if (!$('#panes').hasClass('show')) {
-				$('#panes').removeClass('hide').addClass('show');
-				$('#track, #slides').addClass('adjusted');
-			}
-		},
-		hidePanes: function() {
-			if ($('#panes').hasClass('show')) {
-				$('#panes').removeClass('show').addClass('hide');
-				$('#track, #slides').removeClass('adjusted');
-			}
-		},
-		togglePanes: function() {
-			if (!window.location.pathname || window.location.pathname === '/')
-				APPLICATION.utils.hidePanes();
-			else
-				APPLICATION.utils.showPanes();
-		},
 		showAboutPane: function() {
 			if (!$('#about-pane').hasClass('show')) {
-				APPLICATION.utils.hidePanes();
 				$('#about-trigger').addClass('close');
 				$('#about-pane').addClass('show');
 				$('#track, #slides').addClass('blur');
@@ -332,7 +296,6 @@
 			}
 		},
 		redrawView: function() {
-			APPLICATION.utils.setCurrentPane();
 			APPLICATION.utils.setCurrentDate();
 			APPLICATION.utils.setTickerPosition();
 			APPLICATION.utils.setTickerWidth();
@@ -431,7 +394,8 @@
 			series : [
 				{
 					type: 'bar',
-					data: [10, 9, 9, 8, 9, 8, 7, 8, 7, 7]
+					data: [10, 9, 9, 8, 9, 8, 7, 8, 7, 7],
+					cursor: 'default'
 				}
 			]
 		};
@@ -498,7 +462,8 @@
 			series : [
 				{
 					type: 'bar',
-					data: [9, 7, 10, 9, 9, 9]
+					data: [9, 7, 10, 9, 9, 9],
+					cursor: 'default'
 				}
 			]
 		};
@@ -520,7 +485,7 @@
 						);
 					} else if (data.name === '2016') {
 						returnArr.push(
-							'<b style="color: white;">' + data.name + '</b><br>Career Transition<br>' 
+							'<b style="color: white;">' + data.name + '</b><br>Booz Allen<br>' 
 						);
 					} else if (data.name === '2017') {
 						returnArr.push(
@@ -532,8 +497,8 @@
 				}
 			},
 			title : {
-				text: 'Significant Life Events',
-				subtext: 'Click on a bubble to bring up information about the event',
+				text: 'My Professional Journey',
+				subtext: 'Click on a bubble to bring up more information',
 				x: 'center'
 			},
 			singleAxis: {
@@ -588,9 +553,9 @@
 					'</ul>';
 				} else if (d.name === '2016') {
 					div.innerHTML = '<div style="text-align: center; width: 100%; margin-top: 2%; margin-bottom: 2%; font-size: 1.2em;">' +
-					'<b style="text-align: center;">Career Transition</b>' +
+					'<b style="text-align: center;">Booz Allen</b>' +
 					'</div>' +
-					'In 2016 I transitioned from my job at Booz Allen Hamilton to a role at Deloitte. Whilte at Booz Allen I was able to work on some great projects. Here are some highlights:<br>' +
+					'After graduation I took my first job with Booz Allen Hamilton as an Analyst in their Strategic Innovation Group. Whilte at Booz Allen I was able to work on some great technical and analytics projects. Here are some highlights:<br>' +
 					'<ul>' +
 					'	<li>' + 'Worked on an analytics engagement helping a hospital predict patient readmission rates' + '</li>' +
 					'	<li>' + '<a href="https://www.boozallen.com/content/dam/boozallen/documents/Viewpoints/2016/03/the-challenge-of-sports-science.pdf">' + 
@@ -602,7 +567,7 @@
 					div.innerHTML = '<div style="text-align: center; width: 100%; margin-top: 2%; margin-bottom: 2%; font-size: 1.2em;">' +
 					'<b style="text-align: center;">Deloitte</b>' +
 					'</div>' +
-					'Since 2016 I have worked at Deloitte as a Technology Consultant. My experience here has been truly amazing and I have met some exceptional people in the process. Here are some highlights:<br>' +
+					'In 2016 I transitioned from Booz Allen to a role at Deloitte as a Technology Consultant. My experience here has been truly amazing and I have met some exceptional people in the process. Here are some highlights:<br>' +
 					'<ul>' +
 					'	<li>' + 'Serve as a Front-End Software Engineer on the <a href="http://semoss.org/">SEMOSS platform</a>. SEMOSS is a web-based, end-to-end data analytics platform' + '</li>' +
 					'	<li>' + 'Assisted a federal client in assessing over $400 MM worth of technology systems to find redundancies and identify cost-savings' + '</li>' +
