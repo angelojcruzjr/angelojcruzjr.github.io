@@ -549,21 +549,35 @@
 				latitude: 46.3237,
 				longitude: -120.0087,
 				value: 5,
-				color: 'aqua'
+				color: '#006A8C'
 			},
 			{
 				name: 'The Woodlands, TX',
 				latitude: 30.1658,
 				longitude: -95.4613,
 				value: 5,
-				color: 'aqua'
+				color: '#00A5DB'
 			},
 			{
 				name: 'Washington, DC',
 				latitude: 38.9072,
 				longitude: -77.0369,
 				value: 5,
-				color: 'aqua'
+				color: '#BAE860'
+			},
+			{
+				name: 'Baltimore, MD',
+				latitude: 39.2904,
+				longitude: -76.6122,
+				value: 5,
+				color: '#00A5DB'
+			},
+			{
+				name: 'San Antonio, TX',
+				latitude: 29.4241,
+				longitude: -98.4936,
+				value: 5,
+				color: '#006A8C'
 			}
 		];
 
@@ -571,6 +585,7 @@
 			backgroundColor: '#404a59',
 			title : {
 				text: 'About Me',
+				subtext: 'Zoom, pan, or hover over dots',
 				left: 'center',
 				top: 'top',
 				textStyle: {
@@ -605,7 +620,9 @@
 					emphasis: {
 						areaColor: '#2a333d'
 					}
-				}
+				},
+				center: [-96.5, 37.5],
+				zoom: 7
 			},
 			series : [
 				{
