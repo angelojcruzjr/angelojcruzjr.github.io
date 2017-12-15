@@ -223,6 +223,28 @@
 		setCurrentSlide: function(view) {
 			$('.slide.current').removeClass('current');
 			$('.slide[data-view="'+view+'"]').addClass('current');
+
+			if (view === 'intro') {
+				$('#keys-1').show();
+				$('#keys-2').hide();
+				$('#keys-3').hide();
+				$('#keys-4').hide();
+			} else if (view === 'twitter') {
+				$('#keys-1').hide();
+				$('#keys-2').show();
+				$('#keys-3').hide();
+				$('#keys-4').hide();
+			} else if (view === 'whitehouse') {
+				$('#keys-1').hide();
+				$('#keys-2').hide();
+				$('#keys-3').show();
+				$('#keys-4').hide();
+			} else {
+				$('#keys-1').hide();
+				$('#keys-2').hide();
+				$('#keys-3').hide();
+				$('#keys-4').show();
+			}
 		},
 		nextSlide: function() {
 			$slides.each(function() {
@@ -329,9 +351,12 @@
 		var techChart = echarts.init(document.getElementById('technical-proficiencies-viz')),
 			bizChart = echarts.init(document.getElementById('business-proficiencies-viz')),
 			scatterChart = echarts.init(document.getElementById('scatter-viz')),
+			mapChart = echarts.init(document.getElementById('map-viz')),
+			mapData = [],
 			techOption,
 			businessOption,
-			scatterOption;
+			scatterOption,
+			mapOption;
 
 		barOption = {
 			title : {
@@ -517,6 +542,102 @@
 				symbolSize: 50
 			}
 		}
+
+		mapData = [
+			{
+				name: 'Sunnyside, WA',
+				latitude: 46.3237,
+				longitude: -120.0087,
+				value: 5,
+				color: 'aqua'
+			},
+			{
+				name: 'The Woodlands, TX',
+				latitude: 30.1658,
+				longitude: -95.4613,
+				value: 5,
+				color: 'aqua'
+			},
+			{
+				name: 'Washington, DC',
+				latitude: 38.9072,
+				longitude: -77.0369,
+				value: 5,
+				color: 'aqua'
+			}
+		];
+
+		mapOption = {
+			backgroundColor: '#404a59',
+			title : {
+				text: 'About Me',
+				left: 'center',
+				top: 'top',
+				textStyle: {
+					color: '#fff'
+				}
+			},
+			tooltip : {
+				trigger: 'item',
+				formatter : function (data) {
+					console.warn(data);
+					return data.name;
+				}
+			},
+			visualMap: {
+				show: false,
+			},
+			geo: {
+				name: 'About Me',
+				type: 'map',
+				map: 'world',
+				roam: true,
+				label: {
+					emphasis: {
+						show: false
+					}
+				},
+				itemStyle: {
+					normal: {
+						areaColor: '#323c48',
+						borderColor: '#111'
+					},
+					emphasis: {
+						areaColor: '#2a333d'
+					}
+				}
+			},
+			series : [
+				{
+					type: 'scatter',
+					coordinateSystem: 'geo',
+					data: mapData.map(function (item) {
+						return {
+							name: item.name,
+							value: [
+								item.longitude,
+								item.latitude,
+								item.value
+							],
+							label: {
+								emphasis: {
+									position: 'left',
+									show: false
+								}
+							},
+							itemStyle: {
+								normal: {
+									color: item.color
+								}
+							}
+						};
+					})
+				}
+			]
+		}
+
+		mapChart.setOption(mapOption);
+		mapChart.resize();
 
 		techChart.setOption(barOption);
 		techChart.resize();
