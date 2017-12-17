@@ -114,6 +114,11 @@
 			APPLICATION.events['onKeyRight']();
 		});
 
+		$document.on('click', '.key-left', function(event) {
+			event.stopPropagation();
+			APPLICATION.events['onKeyLeft']();
+		});
+
 		// about click
 		$document.on('click', '#about-trigger', function(event) {
 			event.preventDefault();
@@ -182,6 +187,7 @@
 			}
 		},
 		onKeyLeft: function () {
+			console.warn('key left!');
 			APPLICATION.utils.prevSlide();
 			APPLICATION.utils.redrawView();
 			APPLICATION.utils.flashKey('KeyLeft');
@@ -549,35 +555,35 @@
 				latitude: 46.3237,
 				longitude: -120.0087,
 				value: 5,
-				color: '#006A8C'
+				color: '#FB8536'
 			},
 			{
 				name: 'The Woodlands, TX',
 				latitude: 30.1658,
 				longitude: -95.4613,
 				value: 5,
-				color: '#00A5DB'
+				color: '#86DB68'
 			},
 			{
 				name: 'Washington, DC',
 				latitude: 38.9072,
 				longitude: -77.0369,
 				value: 5,
-				color: '#BAE860'
+				color: '#FDD62A'
 			},
 			{
 				name: 'Baltimore, MD',
 				latitude: 39.2904,
 				longitude: -76.6122,
 				value: 5,
-				color: '#00A5DB'
+				color: '#86DB68'
 			},
 			{
 				name: 'San Antonio, TX',
 				latitude: 29.4241,
 				longitude: -98.4936,
 				value: 5,
-				color: '#006A8C'
+				color: '#FB8536'
 			}
 		];
 
@@ -585,7 +591,7 @@
 			backgroundColor: '#404a59',
 			title : {
 				text: 'About Me',
-				subtext: 'Zoom, pan, or hover over dots',
+				subtext: 'Hover over the dots to show text',
 				left: 'center',
 				top: 'top',
 				textStyle: {
@@ -595,18 +601,48 @@
 			tooltip : {
 				trigger: 'item',
 				formatter : function (data) {
-					console.warn(data);
-					return data.name;
+					var tooltip = [];
+
+					if (data.name === 'Sunnyside, WA') {
+						tooltip.push(
+							'<b style="color: white;">Sunnyside, WA</b><br>',
+							'This is where I was born in 1993; the great Pacific Northwest. I grew<br>',
+							'up in central Washington until about 6th grade when I moved to Texas.'
+						)
+					} else if (data.name === 'San Antonio, TX') {
+						tooltip.push(
+							'<b style="color: white;">San Antonio, TX</b><br>',
+							'This is where my family currently resides. They moved here after I graduated<br>',
+							'college and I find myself getting to know the city more and more when I visit.'
+						)
+					} else if (data.name === 'The Woodlands, TX') {
+						tooltip.push(
+							'<b style="color: white;">The Woodlands, TX</b><br>',
+							'This is where I grew up - my hometown. I went to the Academy of Science &<br>',
+							'Technology at The Woodlands College Park High School where I graduated in 2011.'
+						)
+					} else if (data.name === 'Baltimore, MD') {
+						tooltip.push(
+							'<b style="color: white;">Baltimore, MD</b><br>',
+							'This is where I attended college - at The Johns Hopkins University. I graduated<br>',
+							'in 2015 with a BS in Biomedical Engineering and a Minor in Computer Science.'
+						)
+					} else if (data.name === 'Washington, DC') {
+						tooltip.push(
+							'<b style="color: white;">Washington, DC</b><br>',
+							'This is where I am currently located. After college I accepted my first job as an Analyst<br>',
+							'with Booz Allen Hamilton. In 2016 I accepted a role with Deloitte as a Technology Consultant.'
+						)
+					}
+				
+					return tooltip.join('');
 				}
-			},
-			visualMap: {
-				show: false,
 			},
 			geo: {
 				name: 'About Me',
 				type: 'map',
 				map: 'world',
-				roam: true,
+				roam: false,
 				label: {
 					emphasis: {
 						show: false
@@ -618,7 +654,7 @@
 						borderColor: '#111'
 					},
 					emphasis: {
-						areaColor: '#2a333d'
+						areaColor: '#323c48'
 					}
 				},
 				center: [-96.5, 37.5],
