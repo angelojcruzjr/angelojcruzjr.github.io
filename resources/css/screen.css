@@ -87,6 +87,7 @@
       -moz-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -moz-filter .5s ease-in-out;
       -ms-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -ms-filter .5s ease-in-out;
       transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, filter .5s ease-in-out;
+      font-size: 3em !important;
   }
   #slides.init { visibility:visible; opacity:1; }
   #slides.blur { opacity:.2;
