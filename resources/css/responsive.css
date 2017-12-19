@@ -32,35 +32,10 @@
 	#panes .pane p { margin:0 0 1em; font-size:17px; padding:0 20px; }
 	#panes .pane .left p:first-child { padding-top:20px; }
 	#panes .pane li { font-size:17px; }
-
-	/* inner --------------*/
-	.inner { width:auto; }
-	.inner .left,
-	.inner .right { float:none; width:auto !important; }
-}
-
-/* Regular iphone and iphone 4 and iphone 5 portrait */
-@media screen and (max-device-width: 480px) and (orientation: portrait) {
-	#slides .slide { padding:0 0 10%; }
-}
-
-/* iphone 5 */
-@media screen and (orientation: portrait) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
-	#slides .slide { padding:50px 0; }
-
-	#slides.adjusted .slide { padding:0; }
-	#track.adjusted { bottom:62%; }
-}
-@media screen and (orientation: landscape) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
-	#slides .slide { padding:10px 0 65px; }
 }
 
 /* Regular iphone and iphone 4 and iphone 5 landscape */
 @media screen and (max-device-width: 960px) and (max-device-width: 480px) and (orientation: landscape) {
-	#slides .slide h2 { font-size:46px !important; }
-	#slides .slide p { padding-top:15px; }
-	#slides .slide p img { display:none; }
-
 	/* track adjusted ---------- */
 	#track.adjusted { bottom:140px; }
 
