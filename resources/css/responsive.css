@@ -1,6 +1,5 @@
 @media (max-width: 555px) {
 	/* track ------------------*/
-	#track { bottom:50px; z-index:700; }
 	#track:before { left:70px; right:85px; }
 	#track:after { display:none; }
 	#track #ticker-moment:before { left:40%; }
