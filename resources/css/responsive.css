@@ -5,40 +5,7 @@
 	#track:after { display:none; }
 	#track #ticker-moment:before { left:40%; }
 
-	/* track adjusted ------------------*/
-	#track.adjusted { bottom:225px; }
-
-	/* about trigger ------------------*/
-	#about { display:none; }
-	#about-pane { display:none; }
-
-	/* slide trigger ------------------
-	#slides .slide-trigger { position:fixed !important; right:8px !important; bottom:-22px !important; font-size:15px; }
-	*/
-	#slides .slide-trigger { display:none !important; }
-
 	/* date ------------------*/
 	#dates { left:15px; }
 	#dates:before { display:none; }
-}
-
-
-/* All of mobile */
-@media screen and (max-device-width:480px) {
-
-	/* panes --------------*/
-	#panes { position:relative; margin:73% 0 0; height:auto; padding:20px 0; z-index:800; }
-	#panes .pane img { position:relative; top:auto; margin:-40px 0 0 -75px !important; width:125px; display:block; }
-	#panes .pane p { margin:0 0 1em; font-size:17px; padding:0 20px; }
-	#panes .pane .left p:first-child { padding-top:20px; }
-	#panes .pane li { font-size:17px; }
-}
-
-/* Regular iphone and iphone 4 and iphone 5 landscape */
-@media screen and (max-device-width: 960px) and (max-device-width: 480px) and (orientation: landscape) {
-	/* track adjusted ---------- */
-	#track.adjusted { bottom:140px; }
-
-	/* panes --------------*/
-	#panes { margin:35% 0 0; }
 }
