@@ -590,32 +590,32 @@
 					if (data.name === 'Sunnyside, WA') {
 						tooltip.push(
 							'<b style="color: white;">Sunnyside, WA</b><br>',
-							'This is where I was born in 1993; the great Pacific Northwest. I grew<br>',
-							'up in central Washington until about 6th grade when I moved to Texas.'
+							'I was born here in 1993 and lived here until<br>',
+							'about 6th grade when I moved to Texas'
 						)
 					} else if (data.name === 'San Antonio, TX') {
 						tooltip.push(
 							'<b style="color: white;">San Antonio, TX</b><br>',
-							'This is where my family currently resides. They moved here after I graduated<br>',
-							'college and I find myself getting to know the city more and more when I visit.'
+							'This is where my family currently lives. I find myself<br>',
+							'getting to know the city more and more when I visit.'
 						)
 					} else if (data.name === 'The Woodlands, TX') {
 						tooltip.push(
 							'<b style="color: white;">The Woodlands, TX</b><br>',
-							'This is where I grew up - my hometown. I went to the Academy of Science &<br>',
-							'Technology at The Woodlands College Park High School where I graduated in 2011.'
+							'This is where I grew up - my hometown. I graduated<br>',
+							'high school in 2011 and still visit from time to time.'
 						)
 					} else if (data.name === 'Baltimore, MD') {
 						tooltip.push(
 							'<b style="color: white;">Baltimore, MD</b><br>',
-							'This is where I attended college - at The Johns Hopkins University. I graduated<br>',
-							'in 2015 with a BS in Biomedical Engineering and a Minor in Computer Science.'
+							'This is where I attended college - at The Johns Hopkins<br>',
+							'University. I graduated in 2015 with degrees in BME and CS.'
 						)
 					} else if (data.name === 'Washington, DC') {
 						tooltip.push(
 							'<b style="color: white;">Washington, DC</b><br>',
-							'This is where I am currently located. After college I accepted my first job as an Analyst<br>',
-							'with Booz Allen Hamilton. In 2016 I accepted a role with Deloitte as a Technology Consultant.'
+							'This is where I am currently located. My first job after<br>',
+							'college was with Booz Allen. In 2016 I accepted a role with Deloitte.'
 						)
 					}
 				
