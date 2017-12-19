@@ -1,5 +1,3 @@
-  @import 'compass/css3'
-
   /* reset --------------- */
   html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,form,label,table,caption,tbody,tfoot,thead,tr,th,td {margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
   body { 
@@ -77,35 +75,11 @@
   #ticker-moment:before { content:''; position:absolute; top:10px; left:44%; width:11px; height:17px; background:url('/resources/img/icon-marker.png'); }
   #ticker-moment:hover { color:rgba(255,255,255,.8); }
   
-  /* keys --------------- */
-  #keys { position:absolute; top:0; right:65px; width:60px; height:39px; }
-  #keys a { position:absolute; bottom:0; height:18px; width:18px; text-indent:-999999px; background-color:#fff; background-color:rgba(255,255,255,.3);
-      -webkit-border-radius:3px;
-      -moz-border-radius:3px;
-      -ms-border-radius:3px;
-      border-radius:3px;
-  }
   #track #keys a:after { content:'d'; position:absolute; width:0; height:0; }
-  #keys, #keys a {
-      -webkit-transition:background-color .3s ease-in-out;
-      -moz-transition:background-color .3s ease-in-out;
-      -ms-transition:background-color .3s ease-in-out;
-      transition:background-color .3s ease-in-out;
-  }
   #track:hover #keys a { background-color:rgba(255,255,255,.55); }
   #track #keys a:hover,
   #track #keys a:active,
   #track #keys a.active { background-color:#fff; }
-  /* Key position */
-  #keys #KeyTop { top:0; left:21px; }
-  #keys #KeyRight { right:0; }
-  #keys #KeyBottom { left:21px; }
-  #keys #KeyLeft { left:0; }
-  /* Key arrows */
-  #keys #KeyTop:after { border-right:4px solid transparent; border-left:4px solid transparent; border-bottom:4px solid #211016; top:7px; left:5px; }
-  #keys #KeyRight:after { border-top:4px solid transparent; border-bottom:4px solid transparent; border-left:4px solid #211016; top:5px; left:7px; }
-  #keys #KeyBottom:after { border-right:4px solid transparent; border-left:4px solid transparent; border-top:4px solid #211016; top:7px; left:5px; }
-  #keys #KeyLeft:after { border-top:4px solid transparent; border-bottom:4px solid transparent; border-right:4px solid #211016; top:5px; left:6px; }
   
   /* slides --------------- */
   #slides { top:0%; bottom: 75%; position:fixed; left:10%; right:10%; opacity:0; visibility:hidden;
@@ -227,17 +201,17 @@
       text-align: center;
   }
   
-  /* whitehouse */
-  #slides .slide[data-view="whitehouse"] p img { left:-2.8em; bottom:4px; width:12%; }
-  #slides .slide[data-view="whitehouse"] p { margin:.1em 3.5em; width:82%; text-align: center}
+  /* boozAllen */
+  #slides .slide[data-view="boozAllen"] p img { left:-2.8em; bottom:4px; width:12%; }
+  #slides .slide[data-view="boozAllen"] p { margin:.1em 3.5em; width:82%; text-align: center}
   
-  /* twitter */
-  #slides .slide[data-view="twitter"] p img { left:-2.8em; bottom:4px; width:12%; }
-  #slides .slide[data-view="twitter"] p { margin:.1em 3.5em; width:82%; text-align: center}
+  /* deloitte */
+  #slides .slide[data-view="deloitte"] p img { left:-2.8em; bottom:4px; width:12%; }
+  #slides .slide[data-view="deloitte"] p { margin:.1em 3.5em; width:82%; text-align: center}
 
-  /* columbia */
-  #slides .slide[data-view="columbia"] p img { left:-2.8em; bottom:4px; width:12%; }
-  #slides .slide[data-view="columbia"] p { margin:.1em 3.5em; width:82%; text-align: center}
+  /* jhu */
+  #slides .slide[data-view="jhu"] p img { left:-2.8em; bottom:4px; width:12%; }
+  #slides .slide[data-view="jhu"] p { margin:.1em 3.5em; width:82%; text-align: center}
   
   
 /* panes --------------- */
@@ -263,7 +237,6 @@
     -ms-box-shadow:0 -3px 5px rgba(0,0,0,.2);
     box-shadow:0 -3px 5px rgba(0,0,0,.2);
   }
-  #panes.hide { opacity:0; bottom:-50%; }
   #panes.show {
       position: absolute;
       opacity:1;
@@ -317,21 +290,9 @@
     display:block;
     clear:both;
 }
-
-#panes .pane .close {
-    background-color:#ccc;
-    margin:1.5em 1em .5em;
-    padding:8px;
-    text-align:center;
-    font-weight:bold;
-    text-transform:uppercase;
-    display:block;
-    text-decoration:none;
-}
   
   /* dates --------------- */
   #dates { width:40px; height:65px; position:absolute; top:-8px; left:110px; }
-  #dates:before { content:''; position:absolute; top:33px; right:50px; width:40px; height:10px; background-color:#fff; background-color:rgba(255,255,255,.15); }
   #dates .date { opacity:0; color:rgba(255,255,255,.6); font-size:18px; position:absolute; top:0; text-align:center; text-decoration:none; text-transform:uppercase;
       -webkit-transition:opacity .5s ease-in-out, color .3s ease-in-out;
       -moz-transition:opacity .5s ease-in-out, color .3s ease-in-out;
@@ -343,74 +304,19 @@
       -ms-font-smoothing: antialiased;
       font-smoothing: antialiased;
   }
+  #dates:before { content:''; position:absolute; top:33px; right:50px; width: 250%; height:10px; background-color:#fff; background-color:rgba(255,255,255,.15); }
   #dates .date i { font-weight:bold; font-size:36px; font-style:normal; }
   #dates .date.current { opacity:1; }
   #dates:hover .date { color:#fff; }
   
-  
-  /* info trigger -------------------*/
-  #about { width:17px; height:17px; position:absolute; top:21px; left:36px; }
-  #about #about-trigger { background:rgba(255,255,255,.4) url('/resources/img/icon-info.png') no-repeat 7px 4px; width:18px; height:18px; overflow:hidden; display:block; text-indent:-999999px;
-      -webkit-border-radius:20px;
-      -moz-border-radius:20px;
-      -ms-border-radius:20px;
-      border-radius:20px;
-  
-      -webkit-transition:background-color .3s ease-in-out;
-      -moz-transition:background-color .3s ease-in-out;
-      -ms-transition:background-color .3s ease-in-out;
-      transition:background-color .3s ease-in-out;
-  }
-  #about #about-trigger.close,
-  #about #about-trigger.close:hover { background:#e94700 url('/resources/img/icon-close.png') no-repeat center; }
-  #about #about-trigger:before { content:''; position:absolute; top:4px; right:23px; width:40px; height:10px; background-color:#fff; background-color:rgba(255,255,255,.15); }
-  #about #about-trigger:hover { background-color:#fff; }
-  
-  
-  /* about pane -------------------*/
-  #about-pane { position:fixed; z-index:400; left:0; right:0; opacity:0; top:-50%; padding:20px 0; background:rgba(0,0,0,.65) no-repeat bottom center;
-      -webkit-transition:top .5s ease-in-out, opacity .5s ease-in-out;
-      -moz-transition:top .5s ease-in-out, opacity .5s ease-in-out;
-      -ms-transition:top .5s ease-in-out, opacity .5s ease-in-out;
-      transition:top .5s ease-in-out, opacity .5s ease-in-out;
-      
-      -webkit-box-shadow:0 0 20px rgba(0,0,0,.5);
-      -moz-box-shadow:0 0 20px rgba(0,0,0,.5);
-      -ms-box-shadow:0 0 20px rgba(0,0,0,.5);
-      box-shadow:0 0 20px rgba(0,0,0,.5);
-  }
-  #about-pane div.left { width:340px; }
-  
-  /* Misc content elements */
-  #about-pane * { color:#888; line-height:150%; }
-  #about-pane p strong { color:#fff; display:block; }
-  #about-pane p a { color:#fff; }
-  
-  /* Elsewhere links */
-  #about-pane ul#elsewhere { padding-top:20px; }
-  #about-pane ul#elsewhere li { float:left; width:45%; margin:15px 5% 0 0; font-size:17px; }
-  #about-pane ul#elsewhere li a:hover { background-color:rgba(255,255,255,.15); }
-  
-  /* Show and hide pane */
-  #about-pane.hide { opacity:0; top:-50%; }
-  #about-pane.show { opacity:1; top:0; }
-  
-  
-  /* FIREFOX HACK because of no blur -------------------*/
   @-moz-document url-prefix() {
       #slides .slide[data-order="2"] { opacity:.1; }
       #slides .slide[data-order="3"] { opacity:.05; }
       #slides .slide[data-order="4"] { opacity:.03; }
-      #slides .slide[data-order="17"] { opacity:.03; }
-      #slides .slide[data-order="18"] { opacity:.05; }
-      #slides .slide[data-order="19"] { opacity:.1; }
   
       #slides.adjusted .slide[data-order="2"] { opacity:.05; }
       #slides.adjusted .slide[data-order="3"] { opacity:0; }
       #slides.adjusted .slide[data-order="4"] { opacity:0; }
-      #slides.adjusted .slide[data-order="17"] { opacity:0; }
-      #slides.adjusted .slide[data-order="18"] { opacity:0; }
-      #slides.adjusted .slide[data-order="19"] { opacity:.05; }
   }
 
   /* About Panel */
@@ -622,6 +528,7 @@
     width: 32%;
     background: none !important;
     border: 1.5px solid black !important;
+    border-radius: 1.5rem !important;
 }
 
 .my-button:hover {
@@ -635,4 +542,9 @@
 
 .contact-container {
     width: 100%;
+}
+
+.viz-controls {
+    width: 100%;
+    height: 5%;
 }

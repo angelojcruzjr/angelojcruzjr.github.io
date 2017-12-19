@@ -36,25 +36,12 @@
 
 		APPLICATION.events.onPopState();
 
-		// Show view pane
-		if (window.location.pathname !== '' && window.location.pathname !== '/') {
-			setTimeout(function(){
-				APPLICATION.events['onKeyTop']();
-			}, 250);
-		}
-
 		if (APPLICATION.touch == false) {
 			// Arrow keypress
 			$window.keydown(function(event) {
 				switch (event.which) {
-					case 38:
-						APPLICATION.events['onKeyTop'](); break;
 					case 39:
 						APPLICATION.events['onKeyRight'](); break;
-					case 40:
-						APPLICATION.utils.hideAboutPane();
-					case 27:
-						APPLICATION.events['onKeyBottom'](); break;
 					case 37:
 						APPLICATION.events['onKeyLeft'](); break;
 				}
@@ -92,20 +79,6 @@
 		$document.on('click', '#keys a', function(event) {
 			event.preventDefault();
 			APPLICATION.events['on'+$(this).attr('id')]();
-		});
-
-		// Open click
-		$document.on('click', '.open', function(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			APPLICATION.events['onKeyTop']();
-		});
-
-		// Close click
-		$document.on('click', '.close', function(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			APPLICATION.events['onKeyBottom']();
 		});
 
 		// Ticker click
@@ -159,40 +132,22 @@
 				APPLICATION.inited = true;
 			}
 		},
-		onKeyTop: function (view) {
-			if ($('#about-pane').hasClass('show')) {
-				APPLICATION.utils.hideAboutPane();
-			} else {
-				if (typeof view == 'undefined') {
-					var view = $('.current').data('view');
-				}
-				APPLICATION.utils.hideAboutPane();
-				APPLICATION.utils.flashKey('KeyTop');
-			}
-
-			if (APPLICATION.touch == true) {
-				window.scrollTo(0, 1);
-			}
-		},
 		onKeyRight: function () {
 			APPLICATION.utils.nextSlide();
 			APPLICATION.utils.redrawView();
 			APPLICATION.utils.flashKey('KeyRight');
 		},
-		onKeyBottom: function () {
-			APPLICATION.utils.toggleAboutPane();
-
-			if (APPLICATION.touch == true) {
-				window.scrollTo(0, 1);
-			}
-		},
 		onKeyLeft: function () {
-			console.warn('key left!');
 			APPLICATION.utils.prevSlide();
 			APPLICATION.utils.redrawView();
 			APPLICATION.utils.flashKey('KeyLeft');
 		}
 	};
+
+	$('#linkedin').bind('click', function(e) {
+		e.preventDefault(); 
+		window.open('http://linkedin.com/in/angelojcruz','_blank')
+	 });
 
 	/* utilities -----------------  */
 	APPLICATION.utils = {
@@ -214,16 +169,16 @@
 				railWidth,
 				newPosition;
 
-			// Set the left gutter
-			if (APPLICATION.touch === false) {
-				leftGutter = 168;
+			leftGutter = 0.085 * $(window).width();
+			if ($(window).width() > 556) {
+				leftGutter = 160;
+				railWidth = $('#track').width() - 340;
 			} else {
-				leftGutter = 168;
+				leftGutter = 65;
+				railWidth = $('#track').width() - 240;
 			}
-
-			railWidth = $('#track').width() - 340;
+			
 			newPosition = ((railWidth / ($slides.length - 1)) * $('.slide.current').index()) + leftGutter;
-
 			$('#ticker-moment').css({left:newPosition + 'px'});
 		},
 		setCurrentSlide: function(view) {
@@ -235,12 +190,12 @@
 				$('#keys-2').hide();
 				$('#keys-3').hide();
 				$('#keys-4').hide();
-			} else if (view === 'twitter') {
+			} else if (view === 'deloitte') {
 				$('#keys-1').hide();
 				$('#keys-2').show();
 				$('#keys-3').hide();
 				$('#keys-4').hide();
-			} else if (view === 'whitehouse') {
+			} else if (view === 'boozAllen') {
 				$('#keys-1').hide();
 				$('#keys-2').hide();
 				$('#keys-3').show();
@@ -368,7 +323,10 @@
 			title : {
 				text: 'Technical Proficiences',
 				subtext: 'my geeky side',
-				x: 'center'
+				x: 'center',
+				textStyle: {
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
+				}
 			},
 			tooltip : {
 				trigger: 'axis',
@@ -403,6 +361,9 @@
 					}
 
 					return returnArr.join('');
+				},
+				textStyle: {
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
 				}
 			},
 			grid: {
@@ -414,12 +375,18 @@
 			xAxis: [
 				{
 					type: 'category',
-					data: ['JavaScript', 'HTML', 'CSS', 'Java', 'SQL', 'Python', 'C/C++', 'Linux', 'Hadoop/HDFS', 'AWS']
+					data: ['JavaScript', 'HTML', 'CSS', 'Java', 'SQL', 'Python', 'C/C++', 'Linux', 'Hadoop/HDFS', 'AWS'],
+					nameTextStyle: {
+						fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
+					}
 				}
 			],
 			yAxis: [
 				{
-					type: 'value'
+					type: 'value',
+					nameTextStyle: {
+						fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
+					}
 				}
 			],
 			series : [
@@ -436,7 +403,10 @@
 			title : {
 				text: 'Business Proficiences',
 				subtext: 'my professional side',
-				x: 'center'
+				x: 'center',
+				textStyle: {
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
+				}
 			},
 			tooltip : {
 				trigger: 'axis',
@@ -471,6 +441,9 @@
 					}
 
 					return returnArr.join('');
+				},
+				textStyle: {
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
 				}
 			},
 			grid: {
@@ -482,12 +455,18 @@
 			xAxis: [
 				{
 					type: 'category',
-					data: ['UI/UX', 'Financial Analysis', 'Data Analysis', 'Market Research', 'Strategic Analysis', 'Collaboration']
+					data: ['UI/UX', 'Financial Analysis', 'Data Analysis', 'Market Research', 'Strategic Analysis', 'Collaboration'],
+					nameTextStyle: {
+						fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
+					}
 				}
 			],
 			yAxis: [
 				{
-					type: 'value'
+					type: 'value',
+					nameTextStyle: {
+						fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
+					}
 				}
 			],
 			series : [
@@ -525,12 +504,18 @@
 					}
 
 					return returnArr.join('');
+				},
+				textStyle: {
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
 				}
 			},
 			title : {
 				text: 'My Professional Journey',
 				subtext: 'Click on a bubble to bring up more information',
-				x: 'center'
+				x: 'center',
+				textStyle: {
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
+				}
 			},
 			singleAxis: {
 				left: 50,
@@ -538,7 +523,10 @@
 				top: 60,
 				type: 'category',
 				boundaryGap: false,
-				data: ['2011', '2015', '2016', '2017']
+				data: ['2011', '2015', '2016', '2017'],
+				nameTextStyle: {
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
+				}
 			},
 			series: {
 				singleAxisIndex: 0,
@@ -595,7 +583,8 @@
 				left: 'center',
 				top: 'top',
 				textStyle: {
-					color: '#fff'
+					color: '#fff',
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
 				}
 			},
 			tooltip : {
@@ -636,6 +625,14 @@
 					}
 				
 					return tooltip.join('');
+				},
+				position: function() {
+					if ($(window).width() < 1290) {
+						return ['-25%', '50%'];
+					}
+				},
+				textStyle: {
+					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'
 				}
 			},
 			geo: {
@@ -674,7 +671,7 @@
 							],
 							label: {
 								emphasis: {
-									position: 'left',
+									position: 'right',
 									show: false
 								}
 							},
@@ -682,7 +679,8 @@
 								normal: {
 									color: item.color
 								}
-							}
+							},
+							symbolSize: 17
 						};
 					})
 				}
