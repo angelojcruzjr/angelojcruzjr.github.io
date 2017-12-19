@@ -53,8 +53,6 @@
 			$(".slide").touchwipe({
 			     wipeLeft: function() { APPLICATION.events['onKeyRight'](); },
 			     wipeRight: function() { APPLICATION.events['onKeyLeft'](); },
-			     wipeUp: function() { APPLICATION.events['onKeyDown'](); },
-			     wipeDown: function() { APPLICATION.events['onKeyUp'](); },
 			     min_move_x: 20,
 			     min_move_y: 20,
 			     preventDefaultEvents: true
@@ -65,9 +63,6 @@
 			// resize slide text
 			$slides.fitText(.78);
 		}
-
-		//$('.left').fitText(1.6);
-		//$('.right').fitText(1.9);
 
 		if (APPLICATION.mobile == true) {
 			// start orientation listeners
@@ -754,5 +749,7 @@
 	}
 
 	drawVizzes();
+
+	console.warn('Hello fellow developer! I hope that you enjoy my site :)');
 
 })(window, jQuery, echarts);
