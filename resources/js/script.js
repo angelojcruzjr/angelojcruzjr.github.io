@@ -591,7 +591,7 @@
 						tooltip.push(
 							'<b style="color: white;">Sunnyside, WA</b><br>',
 							'I was born here in 1993 and lived here until<br>',
-							'about 6th grade when I moved to Texas'
+							'about 6th grade when I moved to Texas.'
 						)
 					} else if (data.name === 'San Antonio, TX') {
 						tooltip.push(
