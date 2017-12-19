@@ -1,4 +1,4 @@
-@media screen and (max-width: 555px) {
+@media (max-width: 555px) {
 	/* track ------------------*/
 	#track { bottom:50px; z-index:700; }
 	#track:before { left:70px; right:85px; }
