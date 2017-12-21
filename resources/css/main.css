@@ -75,12 +75,6 @@
   #ticker-moment:before { content:''; position:absolute; top:10px; left:44%; width:11px; height:17px; background:url('/resources/img/icon-marker.png'); }
   #ticker-moment:hover { color:rgba(255,255,255,.8); }
   
-  #track #keys a:after { content:'d'; position:absolute; width:0; height:0; }
-  #track:hover #keys a { background-color:rgba(255,255,255,.55); }
-  #track #keys a:hover,
-  #track #keys a:active,
-  #track #keys a.active { background-color:#fff; }
-  
   /* slides --------------- */
   #slides { top:0%; bottom: 75%; position:fixed; left:10%; right:10%; opacity:0; visibility:hidden;
       -webkit-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -webkit-filter .5s ease-in-out;
