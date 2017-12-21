@@ -50,11 +50,11 @@
 
 		if (APPLICATION.touch == true) {
 			// start swipe listners
-			$(".slide").touchwipe({
+			$("#bg").touchwipe({
 			     wipeLeft: function() { APPLICATION.events['onKeyRight'](); },
 			     wipeRight: function() { APPLICATION.events['onKeyLeft'](); },
-			     min_move_x: 20,
-			     min_move_y: 20,
+			     min_move_x: 15,
+			     min_move_y: 15,
 			     preventDefaultEvents: true
 			});
 		}
