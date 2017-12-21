@@ -55,7 +55,7 @@
 			     wipeRight: function() { APPLICATION.events['onKeyLeft'](); },
 			     min_move_x: 15,
 			     min_move_y: 15,
-			     preventDefaultEvents: true
+			     preventDefaultEvents: false
 			});
 		}
 
@@ -675,7 +675,7 @@
 									color: item.color
 								}
 							},
-							symbolSize: 17
+							symbolSize: 15
 						};
 					})
 				}
