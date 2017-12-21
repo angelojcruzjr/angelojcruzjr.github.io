@@ -623,7 +623,7 @@
 				},
 				position: function() {
 					if ($(window).width() < 1290) {
-						return ['-25%', '50%'];
+						return ['-25%', '80%'];
 					}
 				},
 				textStyle: {
