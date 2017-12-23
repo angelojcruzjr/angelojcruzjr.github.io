@@ -141,7 +141,7 @@
 
 	$('#linkedin').bind('click', function(e) {
 		e.preventDefault(); 
-		window.open('http://linkedin.com/in/angelojcruz','_blank')
+		window.open('https://linkedin.com/in/angelojcruz','_blank')
 	 });
 
 	/* utilities -----------------  */
