@@ -463,6 +463,12 @@
     .viz {
         width: 100%;
     }
+
+    #scatter-viz {
+        max-height: 250px !important;
+        height: auto;
+        min-height: 200px !important;
+    }
 }
 
 @keyframes bounce {
