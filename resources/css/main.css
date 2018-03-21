@@ -528,9 +528,14 @@
 @media (max-width: 555px) {
 	/* track ------------------*/
 	#track {
+        position: absolute;
 		bottom: 10% !important;
 	}
-	#track:before { left:70px; right:85px; }
+	#track:before { 
+        left:70px;
+         right:85px;
+        position: absolute;    
+    }
 
 	/* date ------------------*/
 	#dates { left:15px; }
