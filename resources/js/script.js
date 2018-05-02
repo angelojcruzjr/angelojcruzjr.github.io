@@ -315,6 +315,7 @@
 			mapOption;
 
 		barOption = {
+			color: ['#4FA4DE'],
 			title : {
 				text: 'Technical Proficiences',
 				subtext: 'my geeky side',
@@ -394,7 +395,7 @@
 		};
 
 		businessOption = {
-			color: ['#2f4554'],
+			color: ['#1A936F'],
 			title : {
 				text: 'Business Proficiences',
 				subtext: 'my professional side',
@@ -474,7 +475,7 @@
 		};
 
 		scatterOption = {
-			color: ['#61a0a8'],
+			color: ['#B2CDF4'],
 			tooltip:{ 
 				formatter: function (d) {
 					var returnArr = [],
@@ -538,40 +539,47 @@
 				latitude: 46.3237,
 				longitude: -120.0087,
 				value: 5,
-				color: '#FB8536'
+				color: '#B2CDF4'
 			},
 			{
 				name: 'The Woodlands, TX',
 				latitude: 30.1658,
 				longitude: -95.4613,
 				value: 5,
-				color: '#86DB68'
+				color: '#4FA4DE'
 			},
 			{
 				name: 'Washington, DC',
-				latitude: 38.9072,
-				longitude: -77.0369,
+				latitude: 39,
+				longitude: -78.5,
 				value: 5,
-				color: '#FDD62A'
+				color: '#1A936F'
 			},
 			{
 				name: 'Baltimore, MD',
-				latitude: 39.2904,
-				longitude: -76.6122,
+				latitude: 40,
+				longitude: -77,
 				value: 5,
-				color: '#86DB68'
+				color: '#4FA4DE'
 			},
 			{
 				name: 'San Antonio, TX',
 				latitude: 29.4241,
 				longitude: -98.4936,
 				value: 5,
-				color: '#FB8536'
+				color: '#B2CDF4'
 			}
 		];
 
 		mapOption = {
 			backgroundColor: '#404a59',
+			legend: {
+				left: 'left',
+				data: ['Family', 'School', 'Professional'],
+				textStyle: {
+					color: '#fff'
+				}
+			},
 			title : {
 				text: 'About Me',
 				subtext: 'Hover over the dots to show text',

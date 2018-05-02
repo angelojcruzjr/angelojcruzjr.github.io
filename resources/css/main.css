@@ -215,14 +215,14 @@
   }
 
 #panes .pane {
-      font-size: 1em;
+      font-size: 1.25em;
       padding: 0;
       background: white;
 }
 
 #panes .pane * { 
     line-height:150%; 
-    color:#3a3a3a; 
+    color:#595353; 
 }
   
 #panes .pane a {
@@ -363,8 +363,12 @@
 
 .section-divider {
     font-weight: bold;
-    float: left;
     width: 100%;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #595353;
+    margin-top: 16px;
+    letter-spacing: 4px;
+    text-align: center;
 }
 
 .viz {
@@ -465,9 +469,8 @@
     }
 
     #scatter-viz {
-        max-height: 250px !important;
         height: auto;
-        min-height: 200px !important;
+        min-height: 400px !important;
     }
 }
 
@@ -503,17 +506,16 @@
     cursor: pointer;
     width: 32%;
     background: none !important;
-    border: 1.5px solid black !important;
-    border-radius: 1.5rem !important;
+    border-radius: .5rem !important;
 }
 
 .my-button:hover {
-    background: #919191 !important;
-    background-color: #919191;
+    background: #efefef !important;
+    background-color: #efefef;
 }
 
 .my-button:hover, .my-button:hover .fa, .my-button:hover .text {
-    color: white !important;
+    color: black !important;
 }
 
 .contact-container {
