@@ -701,7 +701,6 @@
 		scatterChart.setOption(scatterOption);
 		scatterChart.on('click', function (d) {
 			var div = document.getElementById('about-me-text');
-			div.className = 'viz about-me';
 			div.innerHTML = '';
 			setTimeout( function() {
 				if (d.name === '2011') {
