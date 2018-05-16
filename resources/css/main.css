@@ -17,11 +17,15 @@
   
   /* globals --------------- */
   html { overflow-x:hidden; }
-  body { background:#222 url('/resources/img/bg-desktop.jpg') center center fixed; font-family:"Helvetica Neue", "Helvetica", arial, sans-serif; overflow-x:hidden; position:relative;
+  body {
+      background-color: #111111;
+      background-image: url('../img/spiration.png');
+      font-family:"Helvetica Neue", "Helvetica", arial, sans-serif;
+      overflow-x:hidden; position:relative;
       -webkit-background-size:cover;
       -moz-background-size:cover;
       -ms-background-size:cover;
-      background-size:cover;
+      background-size: auto;
   }
   * {
       -webkit-touch-callout: none;
@@ -31,62 +35,12 @@
       user-select: none;
   }
   
-  /* track --------------- */
-  #track { 
-      position: fixed;
-      z-index:300;
-      bottom: 5%;
-      left:0;
-      right:0;
-      height:41px;
-      -webkit-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
-      -moz-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
-      -ms-transition:bottom .5s ease-in-out, opacity .5s ease-in-out;
-      transition:bottom .5s ease-in-out;
-  }
-  #track.adjusted { bottom: 42%; }
-  #track:before {
-    content: '';
-    position: absolute;
-    top: 25px;
-    left: 160px;
-    right: 131px;
-    height: 10px;
-    background-color:#fff;
-    background-color:rgba(255,255,255,.15);
-    width: calc(100% -  160px);
-  }
-  #ticker-moment { position:absolute; max-width:50px; top:-8px; left:80px; line-height:2em; text-align:center; font-size:19px; color:#999; color:rgba(255,255,255,.4); text-decoration:none; font-family:'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Arial, Helvetica, sans-serif; font-weight:300;
-      -webkit-transition:left .3s ease-in-out;
-      -moz-transition:left .3s ease-in-out;
-      -ms-transition:left .3s ease-in-out;
-      transition:left .3s ease-in-out;
-  }
-  #ticker-moment:after { content:''; position:absolute; top:31px; left:25%; right:25%; height:14px; background-color:#e94700;
-      -webkit-transform: skew(-30deg);
-      -moz-transform: skew(-30deg);
-      -ms-transform: skew(-30deg);
-      transform: skew(-30deg);
-  
-      -webkit-border-radius:4px;
-      -moz-border-radius:4px;
-      -ms-border-radius:4px;
-      border-radius:4px;	
-  
-      -webkit-box-shadow:2px 0px 2px rgba(0,0,0,.2);
-      -moz-box-shadow:2px 0px 2px rgba(0,0,0,.2);
-      -ms-box-shadow:2px 0px 2px rgba(0,0,0,.2);
-      box-shadow:2px 0px 2px rgba(0,0,0,.2);
-  }
-  #ticker-moment:before { content:''; position:absolute; top:10px; left:44%; width:11px; height:17px; background:url('/resources/img/icon-marker.png'); }
-  #ticker-moment:hover { color:rgba(255,255,255,.8); }
-  
   /* slides --------------- */
-  #slides { top:0%; bottom: 75%; position:fixed; left:10%; right:10%; opacity:0; visibility:hidden;
-      -webkit-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -webkit-filter .5s ease-in-out;
-      -moz-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -moz-filter .5s ease-in-out;
-      -ms-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -ms-filter .5s ease-in-out;
-      transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, filter .5s ease-in-out;
+  #slides { top:0%; bottom: 50%; position:fixed; left:10%; right:10%; opacity:0; visibility:hidden;
+      -webkit-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -webkit-filter .1s ease-in-out;
+      -moz-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -moz-filter .1s ease-in-out;
+      -ms-transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, -ms-filter .1s ease-in-out;
+      transition:bottom .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, filter .1s ease-in-out;
       font-size: 2em !important;
   }
   #slides.init { visibility:visible; opacity:1; }
@@ -97,10 +51,10 @@
       filter: blur(3px);
   }
   #slides .slide { position:absolute; width:80%; cursor:default;
-      -webkit-transition:top .5s ease-in-out, right .5s ease-in-out, opacity .5s ease-in-out, -webkit-transform .5s ease-in-out, -webkit-filter .5s ease-in-out;
-      -moz-transition:top .5s ease-in-out, right .5s ease-in-out, opacity .5s ease-in-out, -moz-transform .5s ease-in-out, -moz-filter .5s ease-in-out;
-      -ms-transition:top .5s ease-in-out, right .5s ease-in-out, opacity .5s ease-in-out, -ms-transform .5s ease-in-out, -ms-filter .5s ease-in-out;
-      transition:top .5s ease-in-out, right .5s ease-in-out, opacity .5s ease-in-out, transform .5s ease-in-out, filter .5s ease-in-out;
+      -webkit-transition:top .5s ease-in-out, right .5s ease-in-out, opacity .5s ease-in-out, -webkit-transform .5s ease-in-out, -webkit-filter .1s ease-in-out;
+      -moz-transition:top .5s ease-in-out, right .5s ease-in-out, opacity .5s ease-in-out, -moz-transform .5s ease-in-out, -moz-filter .1s ease-in-out;
+      -ms-transition:top .5s ease-in-out, right .5s ease-in-out, opacity .5s ease-in-out, -ms-transform .5s ease-in-out, -ms-filter .1s ease-in-out;
+      transition:top .5s ease-in-out, right .5s ease-in-out, opacity .5s ease-in-out, transform .5s ease-in-out, filter .1s ease-in-out;
   }
   
   #slides .slide,
@@ -117,7 +71,7 @@
       top: 60%;
       right: 11%;
   }
-  #slides .slide[data-order="2"] { z-index: 6; top: 30%; right: -15%; opacity: .15;
+  #slides .slide[data-order="2"] { z-index: 6; top: 30%; right: -15%; opacity: .20;
       -webkit-transform: scale(.6);
       -moz-transform: scale(.6);
       -ms-transform: scale(.6);
@@ -128,7 +82,7 @@
       -ms-filter: blur(6px);
       filter: blur(6px);
   }
-  #slides .slide[data-order="4"] { z-index: 6; top: 30%; right: 40%; opacity: .15;
+  #slides .slide[data-order="4"] { z-index: 6; top: 30%; right: 40%; opacity: .20;
       -webkit-transform: scale(.4);
       -moz-transform: scale(.4);
       -ms-transform: scale(.4);
@@ -139,7 +93,7 @@
       -ms-filter: blur(10px);
       filter: blur(10px);
   }
-  #slides .slide[data-order="3"] { z-index: 4; top: 6%; right: 13%; opacity: .15; 
+  #slides .slide[data-order="3"] { z-index: 4; top: 6%; right: 13%; opacity: .20; 
       -webkit-transform: scale(.2);
       -moz-transform: scale(.2);
       -ms-transform: scale(.2);
