@@ -19,13 +19,12 @@
   html { overflow-x:hidden; }
   body {
       background-color: #111111;
-      background-image: url('../img/spiration.png');
-      font-family:"Helvetica Neue", "Helvetica", arial, sans-serif;
-      overflow-x:hidden; position:relative;
-      -webkit-background-size:cover;
-      -moz-background-size:cover;
-      -ms-background-size:cover;
-      background-size: auto;
+      background-image: url('../img/background.jpg');
+      font-family: "Helvetica Neue", "Helvetica", arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat;
   }
   * {
       -webkit-touch-callout: none;
@@ -33,6 +32,13 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+  }
+
+  .background-picture {
+    width: 100%;
+    height: 100%;
+    background: #888888;
+    opacity: 0.7;
   }
   
   /* slides --------------- */
@@ -106,8 +112,27 @@
   }
   
   /* Slide */
-  #slides .slide h2 { color:#fff; text-align:center; font-size:1em; white-space:nowrap; font-family:Rokkitt, helvetica, arial, sans-serif; }
-  #slides .slide p { font-size:.34em; text-shadow:none; color:rgba(255,255,255,.8); display:block; text-align:left; line-height:1.2em; white-space:normal; font-family:'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif; font-weight:100; margin:.1em 5.1em; width:75%; }
+  #slides .slide h2 {
+      color: white;
+      text-align: center;
+      font-size: 1em;
+      white-space: nowrap;
+      font-family: Rokkitt, helvetica, arial, sans-serif;
+      border-bottom: 4px solid white;
+  }
+  #slides .slide p {
+      font-size: .34em;
+      text-shadow: none;
+      color: white;
+      display: block;
+      text-align: left;
+      line-height: 1.2em;
+      white-space: normal;
+      font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      margin: .1em 5.1em;
+      width:75%;
+  }
   #slides .slide p img { position:absolute; left:-3.5em; bottom:4px; width:13%; }
   #slides .slide p,
   #slides .slide p img {
