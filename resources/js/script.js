@@ -75,27 +75,6 @@
 			event.preventDefault();
 			APPLICATION.events['on'+$(this).attr('id')]();
 		});
-
-		// Ticker click
-		$document.on('click', '#ticker, .slide', function(event) {
-			event.preventDefault();
-			APPLICATION.events['onKeyRight']();
-		});
-
-		$document.on('click', '.key-left', function(event) {
-			event.stopPropagation();
-			APPLICATION.events['onKeyLeft']();
-		});
-
-		// about click
-		$document.on('click', '#about-trigger', function(event) {
-			event.preventDefault();
-			APPLICATION.utils.showAboutPane();
-		});
-		$document.on('click', '#about-trigger.close', function(event) {
-			event.preventDefault();
-			APPLICATION.utils.hideAboutPane();
-		});
 	};
 
 	/* events -----------------  */
@@ -237,28 +216,6 @@
 		setCurrentDate: function(view) {
 			$('.date.current').removeClass('current');
 			$('.date[data-view="'+$('.slide.current').data('view')+'"]').addClass('current');
-		},
-		showAboutPane: function() {
-			if (!$('#about-pane').hasClass('show')) {
-				$('#about-trigger').addClass('close');
-				$('#about-pane').addClass('show');
-				$('#track, #slides').addClass('blur');
-			}
-		},
-		hideAboutPane: function() {
-			if ($('#about-pane').hasClass('show')) {
-				$('#about-trigger').removeClass('close');
-				$('#about-pane').removeClass('show');
-				$('#track, #slides').removeClass('blur');
-			}
-		},
-		toggleAboutPane: function() {
-			if ($('#about-pane').hasClass('show')) {
-				APPLICATION.utils.hideAboutPane();
-			}
-			else {
-				APPLICATION.utils.showAboutPane();
-			}
 		},
 		flashKey: function(key) {
 			$('#'+key).addClass('active');
