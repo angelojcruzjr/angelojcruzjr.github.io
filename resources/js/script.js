@@ -296,26 +296,71 @@
   		APPLICATION.events.onPopState();
 	}
 
-	var paneContainerHeight = 0;
+	var paneContainerHeight = 0,
+		barSortDirection = 'desc';
 
 	// Add any resizing events here...
 	window.addEventListener('resize', function() {
-		drawVizzes();
+		drawVizzes(barSortDirection);
 	});
 
-	function drawVizzes() {
+	// Sort Ascending
+	$('#sort-asc').bind('click', function(e) {
+		barSortDirection = 'asc';
+		drawVizzes(barSortDirection);
+	});
+
+	// Sort Descending
+	$('#sort-desc').bind('click', function(e) {
+		barSortDirection = 'desc';
+		drawVizzes(barSortDirection);
+	});;
+
+	function drawVizzes(barDirection) {
 		var techChart = echarts.init(document.getElementById('technical-proficiencies-viz')),
 			bizChart = echarts.init(document.getElementById('business-proficiencies-viz')),
 			scatterChart = echarts.init(document.getElementById('scatter-viz')),
 			mapChart = echarts.init(document.getElementById('map-viz')),
+			barData = [],
+			bizData = [],
+			barLabels = [],
+			bizLabels = [],
 			mapData = [],
 			techOption,
 			businessOption,
 			scatterOption,
 			mapOption;
 
+		if (barDirection === 'asc') {
+			barData = [7, 7, 7, 8, 8, 8, 9, 9, 9, 10];
+			barLabels = ['AWS', 'C/C++', 'Hadoop/HDFS', 'Java', 'Linux', 'Python', 'CSS', 'HTML', 'SQL', 'JavaScript'];
+			bizData = [7, 8, 9, 9, 9, 9, 9, 9, 10];
+			bizLabels = ['Financial Analysis', 'Agile/Scrum', 'Cross-Collaboration', 'Interaction Design', 'Market Research', 'UI/UX', 'User Research', 'Strategy', 'Data Analysis'];
+		} else if (barDirection === 'desc') {
+			barData = [10, 9, 9, 9, 8, 8, 8, 7, 7, 7];
+			barLabels = ['JavaScript', 'CSS', 'HTML', 'SQL', 'Java', 'Linux', 'Python', 'AWS', 'C/C++', 'Hadoop/HDFS'];
+			bizData = [10, 9, 9, 9, 9, 9, 9, 8, 7];
+			bizLabels = ['Data Analysis', 'Cross-Collaboration', 'Interaction Design', 'Market Research', 'UI/UX', 'User Research', 'Strategy', 'Agile/Scrum', 'Financial Analysis'];
+		}
+
 		barOption = {
 			color: ['#4FA4DE'],
+			toolbox: {
+				feature: {
+					magicType: {
+						show: true,
+						type: ['line', 'bar'],
+						title: {
+							line: 'Line',
+							bar: 'Bar'
+						},
+						icon: {
+							line: 'path://"M95,92.5c0,1.4-1.1,2.5-2.5,2.5H18.8C11.2,95,5,88.8,5,81.2V7.5C5,6.1,6.1,5,7.5,5S10,6.1,10,7.5v73.7c0,4.9,4,8.8,8.8,8.8  h73.7C93.9,90,95,91.1,95,92.5z M33.8,77.5c6.1,0,11-4.9,11-11c0-1-0.1-2-0.4-2.9L58,57.2c2,2.6,5.2,4.3,8.7,4.3c6.1,0,11-4.9,11-11  c0-3-1.2-5.6-3.1-7.6l6.1-13.8c0.9,0.3,1.9,0.4,2.9,0.4c6.1,0,11-4.9,11-11s-4.9-11-11-11s-11,4.9-11,11c0,3.6,1.8,6.8,4.5,8.8  l-5.9,13.2c-1.4-0.7-3-1-4.6-1c-6.1,0-11,4.9-11,11c0,1.1,0.2,2.1,0.4,3.1L42.6,60c-2-2.7-5.2-4.5-8.9-4.5c-6.1,0-11,4.9-11,11  S27.7,77.5,33.8,77.5z',
+							bar: 'path://M96,93c0,1.1-0.9,2-2,2H6V7c0-1.1,0.9-2,2-2s2,0.9,2,2v84h84C95.1,91,96,91.9,96,93z M18,88h10c1.7,0,3-1.3,3-3V48  c0-1.7-1.3-3-3-3H18c-1.7,0-3,1.3-3,3v37C15,86.7,16.3,88,18,88z M38,88h10c1.7,0,3-1.3,3-3V27c0-1.7-1.3-3-3-3H38c-1.7,0-3,1.3-3,3  v58C35,86.7,36.3,88,38,88z M58,88h10c1.7,0,3-1.3,3-3V37c0-1.7-1.3-3-3-3H58c-1.7,0-3,1.3-3,3v48C55,86.7,56.3,88,58,88z M78,88h10  c1.7,0,3-1.3,3-3V17c0-1.7-1.3-3-3-3H78c-1.7,0-3,1.3-3,3v68C75,86.7,76.3,88,78,88z'
+						}
+					}
+				}
+			},
 			title : {
 				text: 'Technical Proficiences',
 				subtext: 'my geeky side',
@@ -371,7 +416,7 @@
 			xAxis: [
 				{
 					type: 'category',
-					data: ['JavaScript', 'HTML', 'CSS', 'Java', 'SQL', 'Python', 'C/C++', 'Linux', 'Hadoop/HDFS', 'AWS'],
+					data: barLabels,
 					nameTextStyle: {
 						fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
 					}
@@ -388,7 +433,7 @@
 			series : [
 				{
 					type: 'bar',
-					data: [10, 9, 9, 8, 9, 8, 7, 8, 7, 7],
+					data: barData,
 					cursor: 'default'
 				}
 			]
@@ -404,6 +449,22 @@
 					fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
 				}
 			},
+			toolbox: {
+				feature: {
+					magicType: {
+						show: true,
+						type: ['line', 'bar'],
+						title: {
+							line: 'Line',
+							bar: 'Bar'
+						},
+						icon: {
+							line: 'path://"M95,92.5c0,1.4-1.1,2.5-2.5,2.5H18.8C11.2,95,5,88.8,5,81.2V7.5C5,6.1,6.1,5,7.5,5S10,6.1,10,7.5v73.7c0,4.9,4,8.8,8.8,8.8  h73.7C93.9,90,95,91.1,95,92.5z M33.8,77.5c6.1,0,11-4.9,11-11c0-1-0.1-2-0.4-2.9L58,57.2c2,2.6,5.2,4.3,8.7,4.3c6.1,0,11-4.9,11-11  c0-3-1.2-5.6-3.1-7.6l6.1-13.8c0.9,0.3,1.9,0.4,2.9,0.4c6.1,0,11-4.9,11-11s-4.9-11-11-11s-11,4.9-11,11c0,3.6,1.8,6.8,4.5,8.8  l-5.9,13.2c-1.4-0.7-3-1-4.6-1c-6.1,0-11,4.9-11,11c0,1.1,0.2,2.1,0.4,3.1L42.6,60c-2-2.7-5.2-4.5-8.9-4.5c-6.1,0-11,4.9-11,11  S27.7,77.5,33.8,77.5z',
+							bar: 'path://M96,93c0,1.1-0.9,2-2,2H6V7c0-1.1,0.9-2,2-2s2,0.9,2,2v84h84C95.1,91,96,91.9,96,93z M18,88h10c1.7,0,3-1.3,3-3V48  c0-1.7-1.3-3-3-3H18c-1.7,0-3,1.3-3,3v37C15,86.7,16.3,88,18,88z M38,88h10c1.7,0,3-1.3,3-3V27c0-1.7-1.3-3-3-3H38c-1.7,0-3,1.3-3,3  v58C35,86.7,36.3,88,38,88z M58,88h10c1.7,0,3-1.3,3-3V37c0-1.7-1.3-3-3-3H58c-1.7,0-3,1.3-3,3v48C55,86.7,56.3,88,58,88z M78,88h10  c1.7,0,3-1.3,3-3V17c0-1.7-1.3-3-3-3H78c-1.7,0-3,1.3-3,3v68C75,86.7,76.3,88,78,88z'
+						}
+					}
+				}
+			},
 			tooltip : {
 				trigger: 'axis',
 				axisPointer : {
@@ -413,14 +474,14 @@
 					var returnArr = [],
 						data = d[0];
 
-					if (data.axisValue === 'UI/UX') {
+					if (data.axisValue === 'UI/UX' || data.axisValue === 'Interaction Design' || data.axisValue === 'User Research' || data.axisValue === 'Agile/Scrum') {
 						returnArr.push(
 							'<b style="color: white;">' + data.axisValue + '</b>: ' + data.data + '<br>' 
 						);
 						returnArr.push(
 							'Professional Experience'
 						);
-					} else if (data.axisValue === 'Data Analysis' || data.axisValue === 'Market Research' || data.axisValue === 'Strategic Analysis' || data.axisValue === 'Collaboration') {
+					} else if (data.axisValue === 'Data Analysis' || data.axisValue === 'Market Research' || data.axisValue === 'Strategy' || data.axisValue === 'Cross-Collaboration') {
 						returnArr.push(
 							'<b style="color: white;">' + data.axisValue + '</b>: ' + data.data + '<br>'
 						);
@@ -451,7 +512,7 @@
 			xAxis: [
 				{
 					type: 'category',
-					data: ['UI/UX', 'Financial Analysis', 'Data Analysis', 'Market Research', 'Strategic Analysis', 'Collaboration'],
+					data: bizLabels,
 					nameTextStyle: {
 						fontFamily: 'HelveticaNeue-UltraLight, Helvetica Neue UltraLight, Helvetica Neue, Arial, Helvetica, sans-serif'					
 					}
@@ -468,7 +529,7 @@
 			series : [
 				{
 					type: 'bar',
-					data: [9, 7, 10, 9, 9, 9],
+					data: bizData,
 					cursor: 'default'
 				}
 			]
@@ -752,10 +813,11 @@
 				div.className += ' load';
 			});
 		});
+
 		scatterChart.resize();
 	}
 
-	drawVizzes();
+	drawVizzes(barSortDirection);
 
 	console.warn('Hello fellow developer! I hope that you enjoy my site :)');
 
