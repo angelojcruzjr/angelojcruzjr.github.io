@@ -75,6 +75,11 @@
 			event.preventDefault();
 			APPLICATION.events['on'+$(this).attr('id')]();
 		});
+	
+		$document.on('click', '.key-left', function(event) {
+			event.stopPropagation();
+			APPLICATION.events['onKeyLeft']();
+		});
 	};
 
 	/* events -----------------  */
