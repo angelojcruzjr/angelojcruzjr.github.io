@@ -80,6 +80,11 @@
 			event.stopPropagation();
 			APPLICATION.events['onKeyLeft']();
 		});
+
+		$document.on('click', '.key-right', function(event) {
+			event.stopPropagation();
+			APPLICATION.events['onKeyRight']();
+		});
 	};
 
 	/* events -----------------  */
