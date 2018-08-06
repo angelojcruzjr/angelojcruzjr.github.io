@@ -131,7 +131,7 @@
 		}
 	};
 
-	$('#linkedin').bind('click', function(e) {
+	$('#linkedin').bind('click', (e) => {
 		e.preventDefault(); 
 		window.open('https://linkedin.com/in/angelojcruz','_blank')
 	 });
